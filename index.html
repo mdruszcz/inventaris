@@ -108,7 +108,33 @@
         sup {
             font-size: 0.75em;
         }
+        .table-wrapper {
+            position: relative;
+            padding-top: 30px;
+            margin: 2rem 0;
+        }
+        .table-wrapper table {
+            margin: 0;
+        }
+        .export-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .export-btn:hover {
+            background-color: var(--accent-color);
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -178,8 +204,8 @@
 
         <p>Nous avons opéré un screening systématique des différentes formes de subventions, tant pour celles qui sont octroyées sous forme de dépenses budgétaires et que pour celles qui sont octroyées par la voie fiscale. Celles-ci s'avèrent être le principal mécanisme par lequel la Belgique apporte son soutien aux combustibles fossiles. Pour celles-ci, il y a lieu de définir préalablement le système de référence. Une subvention par la voie fiscale est en effet une dérogation par rapport au système de référence. Pour les impôts sur les revenus et la TVA, nous reprenons le système de référence tel que défini dans l'inventaire fédéral des dépenses fiscales.</p>
 
-        <div class="figure-placeholder">
-            [Graphique 1 : Taux d'accises (en € par tonne équivalent pétrole, 2023) - Bar chart showing rates for different fuels against Benchmark 1 and Benchmark 2]
+        <div class="chart-container" style="position: relative; height: 500px; width: 100%; margin: 2rem 0; background: #fff; padding: 1rem; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <canvas id="graphique1"></canvas>
         </div>
 
         <p>Pour les accises, il n'y a pas de taux de référence unique dans l'inventaire des dépenses fiscales. Afin de mettre en évidence les différences parmi les taux actuellement en vigueur, nous avons opté pour un benchmark unique, à savoir le taux d'accises sur l'essence sans plomb (désormais dénommé <strong>benchmark 1</strong>) et non pour « un taux par produit »<sup>5</sup>. Nous considérons qu'il n'y a pas de raison à ce qu'un vecteur énergétique soit moins taxé qu'un autre. Ce choix nécessite d'exprimer les taux appliqués aux différents vecteurs énergétiques en unité commune. Concrètement, ils sont exprimés en tonnes équivalent pétrole (Tep).</p>
@@ -360,16 +386,16 @@
 
         <p>Les subventions octroyées sous forme de transferts - mesures permanentes - s'élèvent à 757 millions € en 2022 et connaissent un pic suite à l'augmentation du tarif social. Quant aux transferts accordés de façon temporaire, leur montant global avoisine 1.176 millions € en 2022. Il s'agit de transferts aux particuliers et ces subventions ont des objectifs sociaux. Les cartes carburant sont la seule subvention directe recensée qui est octroyée par les impôts sur les revenus. Le montant estimé est de 794 millions € en 2022 et il s'inscrit en hausse constante sur les cinq dernières années du fait du nombre croissant de voitures de société. En 2021 et 2022, ce montant estimé est sensiblement plus élevé non seulement du fait de la hausse continue du nombre de voitures de sociétés mais aussi et surtout de la hausse très importante du prix des carburants. Pour la TVA, la seule subvention directe à recenser est le taux réduit appliqué sur la consommation finale de charbon et le montant est dérisoire, du fait de la très faible utilisation de ce vecteur énergétique.</p>
 
-        <div class="figure-placeholder">
-            [Graphique 2 : Subventions directes aux énergies fossiles, par instrument (2018-2022, en millions €) - Benchmark 1]
+        <div class="chart-container" style="position: relative; height: 500px; width: 100%; margin: 2rem 0; background: #fff; padding: 1rem; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <canvas id="graphique2"></canvas>
         </div>
 
         <p>Les accises sont clairement l'instrument majeur utilisé pour octroyer les subventions aux énergies fossiles. Les exonérations et taux réduits d'accises sont évalués à 10.536 millions € en 2022 et sont en diminution par rapport à 2021 suite à une baisse des volumes consommés.</p>
 
         <p>Comme pour toutes les dépenses fiscales, le montant estimé est fonction du point de référence retenu, le « benchmark ». Comme indiqué ci-dessus, nous avons considéré qu'il n'y avait pas d'arguments justifiant des écarts de taux de taxation entre produits énergétiques. Nous avons alors retenu comme point de référence le taux de taxation de l'essence sans plomb et réalisé la comparaison des taux en exprimant ceux-ci en unité énergétique.</p>
 
-        <div class="figure-placeholder">
-            [Graphique 3 : Subventions aux énergies fossiles, accises, par catégories de subventions (2018-2022, en millions €) - Benchmark 1]
+        <div class="chart-container" style="position: relative; height: 500px; width: 100%; margin: 2rem 0; background: #fff; padding: 1rem; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <canvas id="graphique3"></canvas>
         </div>
 
         <p>Le Graphique 3 détaille les subventions liées aux accises en plusieurs rubriques. La première provient des écarts de taux entre produits. Le montant correspondant est de 5.267 millions € en 2022<sup>7</sup>, en baisse par rapport à 2021. La diminution observée jusqu'en 2019 s'explique par la hausse des accises sur le diesel qui ont convergé vers celles appliquées à l'essence sans plomb, qui constituent ici le point de référence<sup>8</sup>. La part la plus importante des subventions provenant des écarts de taux entre produits provient toutefois de la faible taxation du gaz naturel. Depuis 2020, le montant du subside est principalement influencé par les quantités consommées que ce soit pour le gaz naturel ou le gasoil. Celles-ci sont en forte baisse en 2020 et 2022 et en forte hausse en 2021 suite à la crise du Covid et la reprise qui l'a suivie et également à l'éclatement du conflit en Ukraine.</p>
@@ -380,8 +406,8 @@
 
         <p>Les écarts de taux sur les accises peuvent également être catégorisées par produit comme indiqué dans le Graphique 4.</p>
 
-        <div class="figure-placeholder">
-            [Graphique 4 : Subventions aux énergies fossiles, accises, par produit (2018-2022, en millions €) - Benchmark 1]
+        <div class="chart-container" style="position: relative; height: 500px; width: 100%; margin: 2rem 0; background: #fff; padding: 1rem; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <canvas id="graphique4"></canvas>
         </div>
 
         <p>L'essentiel des subventions porte sur le diesel et sur le gaz naturel.</p>
@@ -390,8 +416,8 @@
 
         <p>L'ensemble des subventions peut être réparti entre les grands secteurs que sont le transport, l'industrie, le bâtiment et le secteur de l'agriculture et activités assimilées. Le Graphique 5 donne le résultat de cette ventilation pour l'année 2022 selon le benchmark 1. Il reprend tant les subventions directes que les subventions indirectes ainsi que les voitures de sociétés reprises comme subvention préjudiciable à l'environnement.</p>
 
-        <div class="figure-placeholder">
-            [Graphique 5 : Répartition des subventions directes, par secteur (2022, en millions €) - Benchmark 1]
+        <div class="chart-container" style="position: relative; height: 500px; width: 100%; margin: 2rem 0; background: #fff; padding: 1rem; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <canvas id="graphique5"></canvas>
         </div>
 
         <p>Le secteur du transport bénéficie de 2.097 millions € de subventions directes, soit 17,4% du total de celles-ci. Les subventions au transport aérien et maritime international s'élèvent à 976 millions €. Les subventions indirectes dont bénéficie ce secteur s'élèvent à 180 millions € et les subventions préjudiciables à l'environnement (EHS) à 3.434 millions. Les autres secteurs ne bénéficient que de subventions directes, l'industrie pour 3.926 millions € (32,5% des subventions directes), les bâtiments pour 4.913 millions € (40,7%) et les activités agricoles et assimilées pour 1.136 millions € (9,4%). Ces montants et ratios doivent être mis en rapport avec l'importance relative des différents secteurs ou activités concernées. Il faut ainsi se rappeler que l'agriculture ne représente, en 2022, que 0,7 % de la valeur ajoutée produite par l'ensemble de l'économie.</p>
@@ -485,5 +511,346 @@
         <p><em><sup>10</sup> Plan fédéral Energie-Climat, 2024, https://climat.be/doc/pfec-2024-mise-a-jour-definitive.pdf</em></p>
     </section>
 
+    <script>
+        const ctx1 = document.getElementById('graphique1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Essence sans plomb (Bench. 1)',
+                    'Diesel haute teneur en soufre',
+                    'Diesel basse teneur en soufre',
+                    'Diesel professionnel',
+                    'Electricité 1ère tranche (Bench. 2 NP)',
+                    'Mazout chauffage haute teneur',
+                    'Mazout chauffage basse teneur',
+                    'Gaz naturel (Non-prof)',
+                    'Electricité 1ère tranche (Bench. 2 Prof)',
+                    'Gasoil util. ind. et com.',
+                    'Kérosène',
+                    'Fioul lourd',
+                    'GPL',
+                    'Houille et coke',
+                    'Lignite',
+                    'Gaz naturel (Prof)',
+                    'Gaz naturel accord de branche'
+                ],
+                datasets: [{
+                    label: "Taux d'accises (€ / tep)",
+                    data: [790, 700, 690, 450, 510, 20, 20, 15, 190, 20, 20, 15, 40, 10, 40, 15, 10],
+                    backgroundColor: [
+                        '#1abc9c', // Benchmark 1
+                        '#2980b9', '#2980b9', '#2980b9', // Carburants
+                        '#e67e22', // Benchmark 2 NP
+                        '#34495e', '#34495e', '#34495e', // Combustibles NP
+                        '#e67e22', // Benchmark 2 Prof
+                        '#34495e', '#34495e', '#34495e', '#34495e', '#34495e', '#34495e', '#34495e', '#34495e' // Combustibles Prof
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Graphique 1 : Taux d'accises (en € par tonne équivalent pétrole, 2023)",
+                        font: { size: 16, family: "'Segoe UI', Roboto, sans-serif" }
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 800,
+                        title: { display: true, text: '€ par tep', font: { weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { 
+                            maxRotation: 45, 
+                            minRotation: 45,
+                            autoSkip: false
+                        }
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('graphique2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'],
+                datasets: [
+                    {
+                        label: 'Transferts - mesures permanentes',
+                        data: [156.7, 178.2, 165.6, 173.1, 756.8],
+                        backgroundColor: '#2980b9'
+                    },
+                    {
+                        label: 'Transferts - mesures temporaires',
+                        data: [0, 0, 0, 215.8, 1175.9],
+                        backgroundColor: '#8e44ad'
+                    },
+                    {
+                        label: 'Impôts sur le revenu',
+                        data: [472.4, 512.8, 521.9, 618.9, 793.9],
+                        backgroundColor: '#e67e22'
+                    },
+                    {
+                        label: 'TVA',
+                        data: [3.6, 2.9, 2.4, 2.4, 5.1],
+                        backgroundColor: '#7f8c8d'
+                    },
+                    {
+                        label: 'Accises',
+                        data: [11045.7, 10786.9, 10661.3, 11019.0, 10536.0],
+                        backgroundColor: '#1abc9c'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Graphique 2 : Subventions directes aux énergies fossiles, par instrument (en millions €)",
+                        font: { size: 16, family: "'Segoe UI', Roboto, sans-serif" }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        title: { display: true, text: 'Millions €', font: { weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('graphique3').getContext('2d');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'],
+                datasets: [
+                    {
+                        label: 'Ecarts de taux entre produits',
+                        data: [5587.4, 5254.1, 4849.2, 5520.1, 5266.6],
+                        backgroundColor: '#2980b9'
+                    },
+                    {
+                        label: 'Taux particuliers pour un même produit',
+                        data: [4783.2, 5093.0, 4750.4, 4773.7, 4482.0],
+                        backgroundColor: '#e67e22'
+                    },
+                    {
+                        label: 'Subventions sur consommation intermédiaire',
+                        data: [675.1, 782.4, 719.1, 725.3, 787.4],
+                        backgroundColor: '#7f8c8d'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Graphique 3 : Subventions aux énergies fossiles, accises, par catégories (en millions €)",
+                        font: { size: 16, family: "'Segoe UI', Roboto, sans-serif" }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        title: { display: true, text: 'Millions €', font: { weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        const ctx4 = document.getElementById('graphique4').getContext('2d');
+        new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'],
+                datasets: [
+                    {
+                        label: 'Essence',
+                        data: [0, 0, 0, 0, 0],
+                        backgroundColor: '#c0392b'
+                    },
+                    {
+                        label: 'Gasoil',
+                        data: [4016.5, 4047.9, 3986.0, 3745.9, 3394.1],
+                        backgroundColor: '#d35400'
+                    },
+                    {
+                        label: 'Kérosène',
+                        data: [41.6, 38.3, 34.8, 43.9, 38.2],
+                        backgroundColor: '#7f8c8d'
+                    },
+                    {
+                        label: 'Fioul lourd',
+                        data: [26.0, 20.1, 52.8, 16.9, 20.1],
+                        backgroundColor: '#bdc3c7'
+                    },
+                    {
+                        label: 'LPG',
+                        data: [127.0, 114.0, 144.8, 149.7, 129.5],
+                        backgroundColor: '#2980b9'
+                    },
+                    {
+                        label: 'Gaz naturel',
+                        data: [6098.3, 5832.5, 5569.1, 6314.9, 6149.4],
+                        backgroundColor: '#1abc9c'
+                    },
+                    {
+                        label: 'Houille et coke',
+                        data: [61.2, 85.2, 21.1, 22.3, 17.2],
+                        backgroundColor: '#2c3e50'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Graphique 4 : Subventions aux énergies fossiles, accises, par produit (en millions €)",
+                        font: { size: 16, family: "'Segoe UI', Roboto, sans-serif" }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        title: { display: true, text: 'Millions €', font: { weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        const ctx5 = document.getElementById('graphique5').getContext('2d');
+        new Chart(ctx5, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Transport (direct)', 
+                    'Transport (indirect)', 
+                    'Transport (EHS)', 
+                    'Industrie', 
+                    'Bâtiments (mesures permanentes)', 
+                    'Bâtiments (mesures temporaires)', 
+                    'Agriculture et autres activités', 
+                    'Transport aérien et maritime international'
+                ],
+                datasets: [{
+                    data: [2097, 180, 3434, 3926, 4913, 1176, 1136, 976],
+                    backgroundColor: [
+                        '#2980b9', // Transport direct
+                        '#a9cce3', // Transport indirect
+                        '#7f8c8d', // Transport EHS
+                        '#9b59b6', // Industrie
+                        '#27ae60', // Bâtiments perm
+                        '#2ecc71', // Bâtiments temp
+                        '#2c3e50', // Agriculture
+                        '#e67e22'  // Transport intl
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "Graphique 5 : Répartition des subventions directes, par secteur (2022, en millions €)",
+                        font: { size: 16, family: "'Segoe UI', Roboto, sans-serif" }
+                    },
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // XLS Export Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tables = document.querySelectorAll('table');
+            
+            tables.forEach((table, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'table-wrapper';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+
+                const btn = document.createElement('button');
+                btn.className = 'export-btn';
+                btn.textContent = 'Export XLS';
+                btn.onclick = () => exportTableToXLS(table, `SPF_Finances_Tableau_${index + 1}.xls`);
+                wrapper.appendChild(btn);
+            });
+
+            function exportTableToXLS(table, filename) {
+                const excelEnvelope = `
+                <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+                <head>
+                    <meta charset="utf-8">
+                    <!--[if gte mso 9]>
+                    <xml>
+                        <x:ExcelWorkbook>
+                            <x:ExcelWorksheets>
+                                <x:ExcelWorksheet>
+                                    <x:Name>Tableau_SPF_Finances</x:Name>
+                                    <x:WorksheetOptions>
+                                        <x:DisplayGridlines/>
+                                    </x:WorksheetOptions>
+                                </x:ExcelWorksheet>
+                            </x:ExcelWorksheets>
+                        </x:ExcelWorkbook>
+                    </xml>
+                    <![endif]-->
+                </head>
+                <body>
+                    ${table.outerHTML}
+                </body>
+                </html>`;
+
+                const blob = new Blob([excelEnvelope], { type: 'application/vnd.ms-excel;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.setAttribute('download', filename);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+    </script>
 </body>
 </html>
