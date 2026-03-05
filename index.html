@@ -254,95 +254,229 @@
         .toc a:hover { color: var(--accent-color); padding-left: 5px; }
         sup { font-size: 0.75em; }
         hr { border: 0; height: 1px; background: var(--border-light); margin: 2rem 0; }
+
+        /* Multi-language Support */
+        [data-lang] {
+            display: none;
+        }
+        [data-lang].active {
+            display: block;
+        }
+        span[data-lang].active {
+            display: inline;
+        }
+        tr[data-lang].active {
+            display: table-row;
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 5px;
+            border: 1px solid var(--border-light);
+        }
+        .lang-btn {
+            border: none;
+            background: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body class="lang-fr">
+
+    <div class="lang-switcher">
+        <button id="btn-fr" class="lang-btn active" onclick="switchLang('fr')">FR</button>
+        <button id="btn-en" class="lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
 
     <div class="hero-wrapper">
         <header>
-            <h1>Inventaire fédéral des subventions aux énergies fossiles</h1>
-            <h2>2025 - RÉSUMÉ</h2>
-            <p><strong>Service Public Fédéral FINANCES</strong><br>
-            Santé publique, Sécurité de la Chaîne alimentaire, Environnement<br>
-            CLIMATECHANGE.BE | .be</p>
+            <div data-lang="fr" class="active">
+                <h1>Inventaire fédéral des subventions aux énergies fossiles</h1>
+                <h2>2025 - RÉSUMÉ</h2>
+                <p><strong>Service Public Fédéral FINANCES</strong><br>
+                Santé publique, Sécurité de la Chaîne alimentaire, Environnement<br>
+                CLIMATECHANGE.BE | .be</p>
+            </div>
+            <div data-lang="en">
+                <h1>Federal Inventory of Fossil Fuel Subsidies</h1>
+                <h2>2025 - SUMMARY</h2>
+                <p><strong>Federal Public Service FINANCE</strong><br>
+                Public Health, Food Chain Safety and Environment<br>
+                CLIMATECHANGE.BE | .be</p>
+            </div>
         </header>
 
         <div class="toc">
-            <h3 style="margin-top: 0;">Table des matières</h3>
-            <ul>
-                <li><a href="#contexte">1. Contexte</a></li>
-                <li><a href="#cadre-conceptuel">2. Le cadre conceptuel</a></li>
-                <li><a href="#principaux-resultats">3. Principaux résultats</a></li>
-            </ul>
+            <div data-lang="fr" class="active">
+                <h3 style="margin-top: 0;">Table des matières</h3>
+                <ul>
+                    <li><a href="#contexte">1. Contexte</a></li>
+                    <li><a href="#cadre-conceptuel">2. Le cadre conceptuel</a></li>
+                    <li><a href="#principaux-resultats">3. Principaux résultats</a></li>
+                </ul>
+            </div>
+            <div data-lang="en">
+                <h3 style="margin-top: 0;">Table of Contents</h3>
+                <ul>
+                    <li><a href="#contexte">1. Background</a></li>
+                    <li><a href="#cadre-conceptuel">2. Conceptual Framework</a></li>
+                    <li><a href="#principaux-resultats">3. Main Results</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="meta-info">
-            <p><strong>Auteurs :</strong> Ce rapport est rédigé par et disponible auprès des services publics fédéraux (SPF) suivants :</p>
-            <ul style="margin-bottom: 1.5rem;">
-                <li><strong>SPF Finances :</strong> Expertise et Support stratégiques - Service d'Etudes - Direction Politique fiscale générale, Boulevard du Roi Albert II 33 bte 22, 1030 Bruxelles</li>
-                <li><strong>SPF Santé publique, Sécurité de la Chaîne alimentaire et Environnement :</strong> DG Environnement - Service Changements climatiques, Avenue Galilée 5/2, 1210 Bruxelles</li>
-            </ul>
-            <p><strong>Personnes de contact :</strong><br>
-            Samantha Haulotte: samantha.haulotte@minfin.fed.be<br>
-            Jean-Baptiste Traversa: giovanbattista.traversa@minfin.fed.be<br>
-            Justine Soete: justine.soete@health.fgov.be</p>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;"><em>Ce rapport a été élaboré sur la base des informations disponibles au 1er janvier 2025. Date de publication: juin 2025. Dépôt légal D/2025/2196/17.</em></p>
-            <p style="font-size: 0.85rem; margin-bottom: 0;">Une copie électronique du rapport complet (également en néerlandais) peut être téléchargée sur :<br>
-            <a href="https://finances.belgium.be/fr/statistiques_et_analyses/analyses/inventaire-des-subventions-aux-energies-fossiles" style="color: var(--secondary-color);">SPF Finances Analyses</a> | 
-            <a href="https://climat.be/2050-fr/analyses-complementaires" style="color: var(--secondary-color);">Climat.be</a></p>
+            <div data-lang="fr" class="active">
+                <p><strong>Auteurs :</strong> Ce rapport est rédigé par et disponible auprès des services publics fédéraux (SPF) suivants :</p>
+                <ul style="margin-bottom: 1.5rem;">
+                    <li><strong>SPF Finances :</strong> Expertise et Support stratégiques - Service d'Etudes - Direction Politique fiscale générale, Boulevard du Roi Albert II 33 bte 22, 1030 Bruxelles</li>
+                    <li><strong>SPF Santé publique, Sécurité de la Chaîne alimentaire et Environnement :</strong> DG Environnement - Service Changements climatiques, Avenue Galilée 5/2, 1210 Bruxelles</li>
+                </ul>
+                <p><strong>Personnes de contact :</strong><br>
+                Samantha Haulotte: samantha.haulotte@minfin.fed.be<br>
+                Jean-Baptiste Traversa: giovanbattista.traversa@minfin.fed.be<br>
+                Justine Soete: justine.soete@health.fgov.be</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;"><em>Ce rapport a été élaboré sur la base des informations disponibles au 1er janvier 2025. Date de publication: juin 2025. Dépôt légal D/2025/2196/17.</em></p>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">Une copie électronique du rapport complet (également en néerlandais) peut être téléchargée sur :<br>
+                <a href="https://finances.belgium.be/fr/statistiques_et_analyses/analyses/inventaire-des-subventions-aux-energies-fossiles" style="color: var(--secondary-color);">SPF Finances Analyses</a> | 
+                <a href="https://climat.be/2050-fr/analyses-complementaires" style="color: var(--secondary-color);">Climat.be</a></p>
+            </div>
+            <div data-lang="en">
+                <p><strong>Authors:</strong> This report is written by and available from the following federal public services (FPS):</p>
+                <ul style="margin-bottom: 1.5rem;">
+                    <li><strong>FPS Finance:</strong> Strategic Expertise and Support - Research Department - General Tax Policy Directorate, Boulevard du Roi Albert II 33 bte 22, 1030 Brussels</li>
+                    <li><strong>FPS Public Health, Food Chain Safety and Environment:</strong> DG Environment - Climate Change Service, Avenue Galilée 5/2, 1210 Brussels</li>
+                </ul>
+                <p><strong>Contact persons:</strong><br>
+                Samantha Haulotte: samantha.haulotte@minfin.fed.be<br>
+                Jean-Baptiste Traversa: giovanbattista.traversa@minfin.fed.be<br>
+                Justine Soete: justine.soete@health.fgov.be</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;"><em>This report was prepared on the basis of information available on January 1, 2025. Publication date: June 2025. Legal deposit D/2025/2196/17.</em></p>
+                <p style="font-size: 0.85rem; margin-bottom: 0;">An electronic copy of the full report (also in Dutch) can be downloaded at:<br>
+                <a href="https://finances.belgium.be/fr/statistiques_et_analyses/analyses/inventaire-des-subventions-aux-energies-fossiles" style="color: var(--secondary-color);">FPS Finance Analyses</a> | 
+                <a href="https://climat.be/2050-fr/analyses-complementaires" style="color: var(--secondary-color);">Climat.be</a></p>
+            </div>
         </div>
     </div>
 
     <section id="contexte">
-        <h2>1. Contexte</h2>
-        <p>Les mesures de soutien mondial aux énergies fossiles restent considérables, et ce malgré les objectifs de neutralité climatique à long terme de la plupart des grands pays et le fait que le déploiement des énergies renouvelables et des économies d'énergie soient plébiscités. En 2023, le coût budgétaire du soutien public aux combustibles fossiles s'élevait selon l'OCDE à 1,1 billion USD. Malgré une baisse de près d'un tiers par rapport à l'année record de 2022, cela signifie que le soutien des gouvernements aux combustibles fossiles reste nettement plus élevé qu'au cours de la dernière décennie.<sup>1</sup></p>
+        <div data-lang="fr" class="active">
+            <h2>1. Contexte</h2>
+            <p>Les mesures de soutien mondial aux énergies fossiles restent considérables, et ce malgré les objectifs de neutralité climatique à long terme de la plupart des grands pays et le fait que le déploiement des énergies renouvelables et des économies d'énergie soient plébiscités. En 2023, le coût budgétaire du soutien public aux combustibles fossiles s'élevait selon l'OCDE à 1,1 billion USD. Malgré une baisse de près d'un tiers par rapport à l'année record de 2022, cela signifie que le soutien des gouvernements aux combustibles fossiles reste nettement plus élevé qu'au cours de la dernière décennie.<sup>1</sup></p>
 
-        <p>Parmi les Etats européens ayant annoncé des engagements de phasing out des subsides aux énergies fossiles, très peu d'entre eux avaient développé des plans spécifiques ou des feuilles de route à cet effet en 2021<sup>2</sup>. En outre, la crise énergétique de 2021-2022 a été propice à la mise en place rapide de mesures de soutien, pour la plupart temporaires, visant à contenir la hausse des prix de l'énergie, y compris des énergies fossiles. Cependant, la crise énergétique met clairement en évidence la nécessité de réduire les consommations énergétiques et d'accélérer la transition vers des sources d'énergie renouvelables. Dans ce sens, la crise incite à renforcer les comportements et les politiques visant à diminuer la consommation des énergies fossiles.</p>
+            <p>Parmi les Etats européens ayant annoncé des engagements de phasing out des subsides aux énergies fossiles, très peu d'entre eux avaient développé des plans spécifiques ou des feuilles de route à cet effet en 2021<sup>2</sup>. En outre, la crise énergétique de 2021-2022 a été propice à la mise en place rapide de mesures de soutien, pour la plupart temporaires, visant à contenir la hausse des prix de l'énergie, y compris des énergies fossiles. Cependant, la crise énergétique met clairement en évidence la nécessité de réduire les consommations énergétiques et d'accélérer la transition vers des sources d'énergie renouvelables. Dans ce sens, la crise incite à renforcer les comportements et les politiques visant à diminuer la consommation des énergies fossiles.</p>
 
-        <p>Des développements qui ont eu lieu à différents niveaux indiquent la volonté d'aller dans le sens d'un abandon progressif des soutiens aux énergies fossiles.</p>
+            <p>Des développements qui ont eu lieu à différents niveaux indiquent la volonté d'aller dans le sens d'un abandon progressif des soutiens aux énergies fossiles.</p>
 
-        <p>Au niveau international, la Belgique fait partie de la Coalition on Phasing Out Fossil Fuel Incentives Including Subsidies (COFFIS)<sup>3</sup> qui vise (1) à accroître la transparence en se fondant sur une méthodologie exhaustive, (2) à évaluer les accords internationaux existants qui constituent des obstacles à la réforme et (3) à élaborer des stratégies nationales d'élimination progressive des subsides aux énergies fossiles. Cependant, aucun progrès n'a été réalisé au niveau de la suppression des subsides aux énergies fossiles au sommet international sur le climat de 2024 (COP29).</p>
+            <p>Au niveau international, la Belgique fait partie de la Coalition on Phasing Out Fossil Fuel Incentives Including Subsidies (COFFIS)<sup>3</sup> qui vise (1) à accroître la transparence en se fondant sur une méthodologie exhaustive, (2) à évaluer les accords internationaux existants qui constituent des obstacles à la réforme et (3) à élaborer des stratégies nationales d'élimination progressive des subsides aux énergies fossiles. Cependant, aucun progrès n'a été réalisé au niveau de la suppression des subsides aux énergies fossiles au sommet international sur le climat de 2024 (COP29).</p>
 
-        <p>Au niveau européen, la révision de la Directive sur la taxation des produits énergétiques est en cours de discussion depuis 2021. La Directive actuelle ne prévoit pas la perception de taxes sur les produits énergétiques dans certains cas spécifiques tels que le transport maritime et l'aviation. Dans le contexte du 8ème programme d'action pour l'environnement de l'UE, le rapportage des subsides préjudiciables à l'environnement a été développé.</p>
+            <p>Au niveau européen, la révision de la Directive sur la taxation des produits énergétiques est en cours de discussion depuis 2021. La Directive actuelle ne prévoit pas la perception de taxes sur les produits énergétiques dans certains cas spécifiques tels que le transport maritime et l'aviation. Dans le contexte du 8ème programme d'action pour l'environnement de l'UE, le rapportage des subsides préjudiciables à l'environnement a été développé.</p>
 
-        <p>Au niveau belge, les négociations relatives à une réforme fiscale ont été interrompues en juillet 2023. Néanmoins, des modifications législatives allant dans le sens d'une suppression progressive ont été approuvées récemment. Parmi celles-ci, on peut citer la première étape franchie avec de premières limitations, étalées de 2022 à 2026, du remboursement du diesel professionnel, ainsi que la fin de la déductibilité fiscale pour les voitures de société essence ou diesel.</p>
+            <p>Au niveau belge, les négociations relatives à une réforme fiscale ont été interrompues en juillet 2023. Néanmoins, des modifications législatives allant dans le sens d'une suppression progressive ont été approuvées récemment. Parmi celles-ci, on peut citer la première étape franchie avec de premières limitations, étalées de 2022 à 2026, du remboursement du diesel professionnel, ainsi que la fin de la déductibilité fiscale pour les voitures de société essence ou diesel.</p>
 
-        <p>Par ailleurs, l'accord de gouvernement fédéral (2025-2029) mentionne que le gouvernement examinera « quelles subventions fossiles peuvent être réduites, sur quel délai réaliste un phasing-out peut avoir lieu, et ce sans générer d'impact économique négatif et sans avoir d'impact négatif sur le pouvoir d'achat ou sur les charges des entreprises ». La contribution fédérale à l'actualisation du PNEC (2024)<sup>4</sup> reprend l'intention d'établir un roadmap pour la suppression des subsides.</p>
+            <p>Par ailleurs, l'accord de gouvernement fédéral (2025-2029) mentionne que le gouvernement examinera « quelles subventions fossiles peuvent être réduites, sur quel délai réaliste un phasing-out peut avoir lieu, et ce sans générer d'impact économique négatif et sans avoir d'impact négatif sur le pouvoir d'achat ou sur les charges des entreprises ». La contribution fédérale à l'actualisation du PNEC (2024)<sup>4</sup> reprend l'intention d'établir un roadmap pour la suppression des subsides.</p>
 
-        <p>Ce quatrième rapport intègre une évaluation systématique des subsides aux énergies fossiles jusqu'à et y compris 2022 et vise donc une mise à jour des inventaires précédents. Il s'avère particulièrement important de mettre régulièrement à jour un inventaire des mesures fédérales de soutien aux énergies fossiles, vu l'évolution des données d'une année à l'autre d'une part et les changements législatifs de certaines mesures d'autre part.</p>
+            <p>Ce quatrième rapport intègre une évaluation systématique des subsides aux énergies fossiles jusqu'à et y compris 2022 et vise donc une mise à jour des inventaires précédents. Il s'avère particulièrement important de mettre régulièrement à jour un inventaire des mesures fédérales de soutien aux énergies fossiles, vu l'évolution des données d'une année à l'autre d'une part et les changements législatifs de certaines mesures d'autre part.</p>
 
-        <p>Suite aux réactions reçues à propos de la précédente édition, ce quatrième rapport d'inventaire introduit des clarifications quant à la méthodologie utilisée. En effet, les incitants à la consommation des dérivés du pétrole tels les subsides et les écarts de taux d'accises mesurés dans ce document ne constituent pas une estimation de recettes budgétaires potentielles qui découleraient de leur suppression. Pour ce faire, il faudrait tenir compte des effets de comportement engendrés par les modifications législatives envisagées. Par ailleurs, les écarts de taux dépendent fortement du taux de référence choisi. Jusqu'à présent, nous avons opté pour l'essence sans plomb (désormais dénommé benchmark 1). Cette édition reprend également à titre de comparaison un autre taux de référence qui fait la distinction sur base de l'usage, à savoir comme carburant ou combustible (benchmark 2).</p>
+            <p>Suite aux réactions reçues à propos de la précédente édition, ce quatrième rapport d'inventaire introduit des clarifications quant à la méthodologie utilisée. En effet, les incitants à la consommation des dérivés du pétrole tels les subsides et les écarts de taux d'accises mesurés dans ce document ne constituent pas une estimation de recettes budgétaires potentielles qui découleraient de leur suppression. Pour ce faire, il faudrait tenir compte des effets de comportement engendrés par les modifications législatives envisagées. Par ailleurs, les écarts de taux dépendent fortement du taux de référence choisi. Jusqu'à présent, nous avons opté pour l'essence sans plomb (désormais dénommé benchmark 1). Cette édition reprend également à titre de comparaison un autre taux de référence qui fait la distinction sur base de l'usage, à savoir comme carburant ou combustible (benchmark 2).</p>
 
-        <hr>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">
-        <em><sup>1</sup> OECD, 2024, Inventory of support measures for fossil fuels, OECD Publishing, Paris</em><br>
-        <em><sup>2</sup> European Commission (2021), Directorate-General for Energy, Lee, L., Rademaekers, K., Bovy, P., et al., Study on energy subsidies and other government interventions in the European Union: final report, Publications Office, 2021</em><br>
-        <em><sup>3</sup> La Belgique a signé le Joint Statement on Fossil Fuel Subsidie à la COP28 (2023). Cette initiative des Pays-Bas a été renommée la Coalition on Phasing Out Fossil Fuel Incentives Including Subsidies (COFFIS).</em><br>
-        <em><sup>4</sup> https://climat.be/doc/pfec-2024-mise-a-jour-definitive.pdf</em></p>
+            <hr>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+            <em><sup>1</sup> OECD, 2024, Inventory of support measures for fossil fuels, OECD Publishing, Paris</em><br>
+            <em><sup>2</sup> European Commission (2021), Directorate-General for Energy, Lee, L., Rademaekers, K., Bovy, P., et al., Study on energy subsidies and other government interventions in the European Union: final report, Publications Office, 2021</em><br>
+            <em><sup>3</sup> La Belgique a signé le Joint Statement on Fossil Fuel Subsidie à la COP28 (2023). Cette initiative des Pays-Bas a été renommée la Coalition on Phasing Out Fossil Fuel Incentives Including Subsidies (COFFIS).</em><br>
+            <em><sup>4</sup> https://climat.be/doc/pfec-2024-mise-a-jour-definitive.pdf</em></p>
+        </div>
+        <div data-lang="en">
+            <h2>1. Background</h2>
+            <p>Global support measures for fossil fuels remain considerable, despite the long-term climate neutrality targets of most major countries and the fact that the deployment of renewable energies and energy savings are favored. In 2023, the budgetary cost of public support for fossil fuels amounted to USD 1.1 trillion according to the OECD. Despite a drop of nearly a third compared to the record year of 2022, this means that government support for fossil fuels remains significantly higher than during the last decade.<sup>1</sup></p>
+
+            <p>Among the European states that have announced commitments to phase out fossil fuel subsidies, very few of them had developed specific plans or roadmaps for this purpose in 2021<sup>2</sup>. In addition, the 2021-2022 energy crisis was conducive to the rapid implementation of support measures, mostly temporary, aimed at containing the rise in energy prices, including fossil fuels. However, the energy crisis clearly highlights the need to reduce energy consumption and accelerate the transition to renewable energy sources. In this sense, the crisis encourages behavior and policies aimed at reducing the consumption of fossil fuels.</p>
+
+            <p>Developments at different levels indicate the will to move towards a gradual phasing out of support for fossil fuels.</p>
+
+            <p>At the international level, Belgium is part of the Coalition on Phasing Out Fossil Fuel Incentives Including Subsidies (COFFIS)<sup>3</sup> which aims (1) to increase transparency based on a comprehensive methodology, (2) to evaluate existing international agreements that constitute obstacles to reform and (3) to develop national strategies for the gradual elimination of fossil fuel subsidies. However, no progress was made on the removal of fossil fuel subsidies at the 2024 international climate summit (COP29).</p>
+
+            <p>At the European level, the revision of the Energy Taxation Directive has been under discussion since 2021. The current Directive does not provide for the collection of taxes on energy products in certain specific cases such as maritime transport and aviation. In the context of the EU's 8th Environmental Action Programme, reporting of environmentally harmful subsidies has been developed.</p>
+
+            <p>At the Belgian level, negotiations regarding tax reform were interrupted in July 2023. Nevertheless, legislative changes towards a gradual phasing out were recently approved. These include the first step taken with initial limitations, spread from 2022 to 2026, on the reimbursement of professional diesel, as well as the end of tax deductibility for petrol or diesel company cars.</p>
+
+            <p>Furthermore, the federal government agreement (2025-2029) mentions that the government will examine "which fossil subsidies can be reduced, on what realistic timeframe a phasing-out can take place, without generating a negative economic impact and without having a negative impact on purchasing power or on the costs for companies". The federal contribution to the update of the NECP (2024)<sup>4</sup> includes the intention to establish a roadmap for the removal of subsidies.</p>
+
+            <p>This fourth report integrates a systematic evaluation of fossil fuel subsidies up to and including 2022 and therefore aims for an update of previous inventories. It is particularly important to regularly update an inventory of federal fossil fuel support measures, given the evolution of data from one year to another on the one hand and the legislative changes of certain measures on the other.</p>
+
+            <p>Following reactions received about the previous edition, this fourth inventory report introduces clarifications regarding the methodology used. Indeed, incentives for the consumption of petroleum derivatives such as subsidies and excise rate differences measured in this document do not constitute an estimate of potential budgetary revenues that would result from their removal. To do this, it would be necessary to take into account the behavioral effects generated by the planned legislative modifications. Furthermore, rate differences strongly depend on the chosen reference rate. So far, we have opted for unleaded petrol (now referred to as benchmark 1). This edition also includes, for comparison, another reference rate that distinguishes based on use, namely as motor fuel or heating fuel (benchmark 2).</p>
+
+            <hr>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+            <em><sup>1</sup> OECD, 2024, Inventory of support measures for fossil fuels, OECD Publishing, Paris</em><br>
+            <em><sup>2</sup> European Commission (2021), Directorate-General for Energy, Lee, L., Rademaekers, K., Bovy, P., et al., Study on energy subsidies and other government interventions in the European Union: final report, Publications Office, 2021</em><br>
+            <em><sup>3</sup> Belgium signed the Joint Statement on Fossil Fuel Subsidies at COP28 (2023). This initiative of the Netherlands has been renamed the Coalition on Phasing Out Fossil Fuel Incentives Including Subsidies (COFFIS).</em><br>
+            <em><sup>4</sup> https://climat.be/doc/pfec-2024-mise-a-jour-definitive.pdf</em></p>
+        </div>
     </section>
 
     <section id="cadre-conceptuel">
-        <h2>2. Le cadre conceptuel</h2>
-        <p>Le choix opéré dans cet Inventaire est celui d'une approche qui combine l'approche 'bottom-up' de l'OCDE et l'approche de l'OMC. Une autre approche possible était celle du « price-gap », développée notamment par le FMI. Cette approche n'a pas été retenue ici car elle ne recense pas directement les subventions et ses résultats sont trop dépendants des hypothèses émises sur les coûts de production et sur les coûts externes.</p>
+        <div data-lang="fr" class="active">
+            <h2>2. Le cadre conceptuel</h2>
+            <p>Le choix opéré dans cet Inventaire est celui d'une approche qui combine l'approche 'bottom-up' de l'OCDE et l'approche de l'OMC. Une autre approche possible était celle du « price-gap », développée notamment par le FMI. Cette approche n'a pas été retenue ici car elle ne recense pas directement les subventions et ses résultats sont trop dépendants des hypothèses émises sur les coûts de production et sur les coûts externes.</p>
 
-        <p>Nous avons opéré un screening systématique des différentes formes de subventions, tant pour celles qui sont octroyées sous forme de dépenses budgétaires et que pour celles qui sont octroyées par la voie fiscale. Celles-ci s'avèrent être le principal mécanisme par lequel la Belgique apporte son soutien aux combustibles fossiles. Pour celles-ci, il y a lieu de définir préalablement le système de référence. Une subvention par la voie fiscale est en effet une dérogation par rapport au système de référence. Pour les impôts sur les revenus et la TVA, nous reprenons le système de référence tel que défini dans l'inventaire fédéral des dépenses fiscales.</p>
+            <p>Nous avons opéré un screening systématique des différentes formes de subventions, tant pour celles qui sont octroyées sous forme de dépenses budgétaires et que pour celles qui sont octroyées par la voie fiscale. Celles-ci s'avèrent être le principal mécanisme par lequel la Belgique apporte son soutien aux combustibles fossiles. Pour celles-ci, il y a lieu de définir préalablement le système de référence. Une subvention par la voie fiscale est en effet une dérogation par rapport au système de référence. Pour les impôts sur les revenus et la TVA, nous reprenons le système de référence tel que défini dans l'inventaire fédéral des dépenses fiscales.</p>
+        </div>
+        <div data-lang="en">
+            <h2>2. Conceptual Framework</h2>
+            <p>The choice made in this Inventory is an approach that combines the OECD's 'bottom-up' approach and the WTO approach. Another possible approach was the "price-gap" approach, developed notably by the IMF. This approach was not adopted here because it does not directly identify subsidies and its results are too dependent on assumptions made about production costs and external costs.</p>
+
+            <p>We carried out a systematic screening of the different forms of subsidies, both for those granted in the form of budgetary expenditure and for those granted through tax channels. These turn out to be the main mechanism by which Belgium provides its support for fossil fuels. For these, it is necessary to previously define the reference system. A subsidy through tax channels is indeed a derogation from the reference system. For income taxes and VAT, we use the reference system as defined in the federal tax expenditure inventory.</p>
+        </div>
 
         <div class="chart-container">
             <canvas id="graphique1"></canvas>
-            
         </div>
 
-        <p>Pour les accises, il n'y a pas de taux de référence unique dans l'inventaire des dépenses fiscales. Afin de mettre en évidence les différences parmi les taux actuellement en vigueur, nous avons opté pour un benchmark unique, à savoir le taux d'accises sur l'essence sans plomb (désormais dénommé <strong>benchmark 1</strong>) et non pour « un taux par produit »<sup>5</sup>. Nous considérons qu'il n'y a pas de raison à ce qu'un vecteur énergétique soit moins taxé qu'un autre. Ce choix nécessite d'exprimer les taux appliqués aux différents vecteurs énergétiques en unité commune. Concrètement, ils sont exprimés en tonnes équivalent pétrole (Tep).</p>
+        <div data-lang="fr" class="active">
+            <p>Pour les accises, il n'y a pas de taux de référence unique dans l'inventaire des dépenses fiscales. Afin de mettre en évidence les différences parmi les taux actuellement en vigueur, nous avons opté pour un benchmark unique, à savoir le taux d'accises sur l'essence sans plomb (désormais dénommé <strong>benchmark 1</strong>) et non pour « un taux par produit »<sup>5</sup>. Nous considérons qu'il n'y a pas de raison à ce qu'un vecteur énergétique soit moins taxé qu'un autre. Ce choix nécessite d'exprimer les taux appliqués aux différents vecteurs énergétiques en unité commune. Concrètement, ils sont exprimés en tonnes équivalent pétrole (Tep).</p>
 
-        <p>Cette édition reprend également à titre de comparaison un autre taux de référence qui fait la distinction sur base de l'usage, à savoir comme carburant ou combustible (<strong>benchmark 2</strong>). Dans le benchmark 2, l'essence sans plomb est toujours le taux de référence des carburants mais pour les autres usages repris sous l'appellation combustibles, c'est le taux d'accise sur la première tranche de consommation d'électricité qui a été choisi, en faisant la distinction entre usage professionnel et usage non-professionnel.</p>
+            <p>Cette édition reprend également à titre de comparaison un autre taux de référence qui fait la distinction sur base de l'usage, à savoir comme carburant ou combustible (<strong>benchmark 2</strong>). Dans le benchmark 2, l'essence sans plomb est toujours le taux de référence des carburants mais pour les autres usages repris sous l'appellation combustibles, c'est le taux d'accise sur la première tranche de consommation d'électricité qui a été choisi, en faisant la distinction entre usage professionnel et usage non-professionnel.</p>
 
-        <p>Une distinction est également opérée entre les subventions directes, qui s'appliquent à la consommation d'énergie fossile, et les subventions indirectes qui s'appliquent à la production de services ayant un large recours aux énergies fossiles. Suite à l'évolution de la classification européenne et à l'introduction d'un nouveau rapportage relatif aux Environmentally Harmful Subsidies, le régime fiscal des voitures de sociétés est désormais repris en tant que subside préjudiciable à l'environnement et non plus en tant que subside indirect aux énergies fossiles.</p>
+            <p>Une distinction est également opérée entre les subventions directes, qui s'appliquent à la consommation d'énergie fossile, et les subventions indirectes qui s'appliquent à la production de services ayant un large recours aux énergies fossiles. Suite à l'évolution de la classification européenne et à l'introduction d'un nouveau rapportage relatif aux Environmentally Harmful Subsidies, le régime fiscal des voitures de sociétés est désormais repris en tant que subside préjudiciable à l'environnement et non plus en tant que subside indirect aux énergies fossiles.</p>
 
-        <p>Le critère d'identification des subventions est donc le recours aux énergies fossiles. Certaines subventions ont des objectifs particuliers. C'est évident en ce qui concerne les tarifs sociaux sur les consommations d'énergie et autres interventions sociales similaires. L'existence d'autres objectifs est à prendre en considération, non pas au stade de l'identification, mais au stade de la réforme, en recherchant un meilleur moyen d'atteindre l'objectif spécifique tout en n'ayant pas d'effet négatif sur l'environnement.</p>
+            <p>Le critère d'identification des subventions est donc le recours aux énergies fossiles. Certaines subventions ont des objectifs particuliers. C'est évident en ce qui concerne les tarifs sociaux sur les consommations d'énergie et autres interventions sociales similaires. L'existence d'autres objectifs est à prendre en considération, non pas au stade de l'identification, mais au stade de la réforme, en recherchant un meilleur moyen d'atteindre l'objectif spécifique tout en n'ayant pas d'effet négatif sur l'environnement.</p>
 
-        <hr>
-        <p style="font-size: 0.85rem; color: var(--text-muted);"><em><sup>5</sup> L'inventaire fédéral des dépenses fiscales fait le choix d'un taux par produit en partant du principe que les accises sont des taxes spécifiques.</em></p>
+            <hr>
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em><sup>5</sup> L'inventaire fédéral des dépenses fiscales fait le choix d'un taux par produit en partant du principe que les accises sont des taxes spécifiques.</em></p>
+        </div>
+        <div data-lang="en">
+            <p>For excise duties, there is no single reference rate in the tax expenditure inventory. In order to highlight the differences among the rates currently in force, we have opted for a single benchmark, namely the excise rate on unleaded petrol (now referred to as <strong>benchmark 1</strong>) and not for "a rate per product"<sup>5</sup>. We consider that there is no reason why one energy vector should be taxed less than another. This choice requires expressing the rates applied to the different energy vectors in a common unit. Concretely, they are expressed in tonnes of oil equivalent (toe).</p>
+
+            <p>This edition also includes, for comparison, another reference rate that distinguishes based on use, namely as motor fuel or heating fuel (<strong>benchmark 2</strong>). In benchmark 2, unleaded petrol is still the reference rate for motor fuels, but for other uses categorized as heating fuels, the excise rate on the first consumption tier of electricity was chosen, distinguishing between professional and non-professional use.</p>
+
+            <p>A distinction is also made between direct subsidies, which apply to fossil energy consumption, and indirect subsidies which apply to the production of services with high fossil fuel usage. Following the evolution of European classification and the introduction of new reporting related to Environmentally Harmful Subsidies, the tax regime for company cars is now included as an environmentally harmful subsidy and no longer as an indirect fossil fuel subsidy.</p>
+
+            <p>The criterion for identifying subsidies is therefore the use of fossil fuels. Some subsidies have specific objectives. This is evident regarding social tariffs on energy consumption and other similar social interventions. The existence of other objectives is to be taken into consideration, not at the identification stage, but at the reform stage, by seeking a better way to achieve the specific objective while having no negative effect on the environment.</p>
+
+            <hr>
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em><sup>5</sup> The federal tax expenditure inventory chooses a rate per product on the principle that excise duties are specific taxes.</em></p>
+        </div>
     </section>
 
     <!-- Image requested before Point 3 -->
@@ -352,82 +486,146 @@
     </div>
 
     <section id="principaux-resultats">
-        <h2>3. Principaux résultats</h2>
-        <p>Ce rapport vise à être autant que possible exhaustif pour les subventions directes. Pour les subventions indirectes, nous n'avons pu être exhaustifs et le choix des cas traités ne doit pas être interprété comme un ordre de priorité. Il a davantage été dicté par les données disponibles et par la complexité des différents cas, notamment pour le transport.</p>
+        <div data-lang="fr" class="active">
+            <h2>3. Principaux résultats</h2>
+            <p>Ce rapport vise à être autant que possible exhaustif pour les subventions directes. Pour les subventions indirectes, nous n'avons pu être exhaustifs et le choix des cas traités ne doit pas être interprété comme un ordre de priorité. Il a davantage été dicté par les données disponibles et par la complexité des différents cas, notamment pour le transport.</p>
 
-        <p>Pour les subventions d'origine fiscale, l'Inventaire fédéral des dépenses fiscales fournit un point de départ. Il a cependant dû être complété, vu le manque d'estimations de pertes en recettes pour certains postes importants, comme les cartes carburant, les exemptions d'accises sur la consommation intermédiaire ou encore l'exemption d'accises sur le kérosène. Une autre modification importante concerne la prise en compte, parmi les subventions, des écarts de taux d'accises entre les différents produits énergétiques.</p>
+            <p>Pour les subventions d'origine fiscale, l'Inventaire fédéral des dépenses fiscales fournit un point de départ. Il a cependant dû être complété, vu le manque d'estimations de pertes en recettes pour certains postes importants, comme les cartes carburant, les exemptions d'accises sur la consommation intermédiaire ou encore l'exemption d'accises sur le kérosène. Une autre modification importante concerne la prise en compte, parmi les subventions, des écarts de taux d'accises entre les différents produits énergétiques.</p>
 
-        <h3>Tableau 1 : Ecarts de taux entre produits (2022, en millions €) - Benchmark 1 et 2</h3>
+            <h3>Tableau 1 : Ecarts de taux entre produits (2022, en millions €) - Benchmark 1 et 2</h3>
+        </div>
+        <div data-lang="en">
+            <h2>3. Main Results</h2>
+            <p>This report aims to be as exhaustive as possible for direct subsidies. For indirect subsidies, we could not be exhaustive and the choice of cases treated should not be interpreted as an order of priority. It was dictated more by the available data and by the complexity of the different cases, particularly for transport.</p>
+
+            <p>For subsidies of tax origin, the federal tax expenditure inventory provides a starting point. However, it had to be supplemented, given the lack of revenue loss estimates for some important items, such as fuel cards, excise exemptions on intermediate consumption or the excise exemption on kerosene. Another important modification concerns the inclusion, among subsidies, of excise rate differences between different energy products.</p>
+
+            <h3>Table 1: Rate differences between products (2022, in million €) - Benchmark 1 and 2</h3>
+        </div>
         <table>
             <thead>
-                <tr>
+                <tr data-lang="fr" class="active">
                     <th>Produit</th>
                     <th>Benchmark 1</th>
                     <th>Benchmark 2</th>
                 </tr>
-            </thead>
-            <tbody>
-                <tr class="subheader"><td colspan="3">Carburants</td></tr>
-                <tr><td>Essence sans plomb</td><td>0,0</td><td>0,0</td></tr>
-                <tr><td>Gasoil haute teneur en soufre</td><td>0,1</td><td>0,1</td></tr>
-                <tr><td>Gasoil faible teneur en soufre</td><td>382,4</td><td>382,4</td></tr>
-                <tr class="total-row"><td>Total carburants</td><td>382,5</td><td>382,5</td></tr>
-                
-                <tr class="subheader"><td colspan="3">Combustibles</td></tr>
-                <tr><td>Kérosène (hors aviation)</td><td>0,0</td><td>0,0</td></tr>
-                <tr><td>Fioul lourd</td><td>20,1</td><td>4,4</td></tr>
-                <tr><td>GPL</td><td>9,2</td><td>1,8</td></tr>
-                <tr><td>Gaz naturel professionnel</td><td>2.553,1</td><td>900,5</td></tr>
-                <tr><td>Gaz naturel : non-professionnel</td><td>2.301,1</td><td>520,3</td></tr>
-                <tr><td>Houille et coke</td><td>0,7</td><td>0,2</td></tr>
-                <tr class="total-row"><td>Total combustibles</td><td>4.884,2</td><td>1.427,2</td></tr>
-            </tbody>
-        </table>
-
-        <h3>Tableau 2 : Ecarts de taux entre utilisations d'un même produit (2022, en millions €) - Benchmark 1 et 2</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Utilisation</th>
+                <tr data-lang="en">
+                    <th>Product</th>
                     <th>Benchmark 1</th>
                     <th>Benchmark 2</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="subheader"><td colspan="3">Carburants</td></tr>
-                <tr><td>Remboursement de diesel professionnel</td><td>742,4</td><td>742,4</td></tr>
-                <tr><td>Kérosène utilisé comme carburant</td><td>1,3</td><td>1,3</td></tr>
-                <tr class="total-row"><td>Total carburants</td><td>743,8</td><td>743,8</td></tr>
-
-                <tr class="subheader"><td colspan="3">Combustibles</td></tr>
-                <tr><td colspan="3" style="font-weight: 600; padding-left: 25px; color: var(--primary-color);">Usage professionnel</td></tr>
-                <tr><td>Gasoil - utilisations industrielles et commerciales</td><td>412,5</td><td>87,3</td></tr>
-                <tr><td>Kérosène utilisé comme combustible</td><td>36,9</td><td>7,9</td></tr>
-                <tr><td>Gaz naturel au taux réduit</td><td>993,9</td><td>291,2</td></tr>
-
-                <tr><td colspan="3" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);">Usage non-professionnel</td></tr>
-                <tr><td>Mazout de chauffage - haute teneur en soufre</td><td>868,1</td><td>205,0</td></tr>
-                <tr><td>Mazout de chauffage - faible teneur en soufre</td><td>1.856,8</td><td>181,5</td></tr>
-                <tr class="total-row"><td>Mazout de chauffage - total</td><td>2.724,9</td><td>386,5</td></tr>
-                <tr><td>GPL utilisé comme combustible</td><td>120,3</td><td>25,5</td></tr>
-                <tr><td>Houille et coke - exonération pour les ménages</td><td>16,5</td><td>3,8</td></tr>
-                <tr class="total-row"><td>Total combustibles</td><td>3.436,9</td><td>802,2</td></tr>
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Carburants</span><span data-lang="en">Motor fuels</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Essence sans plomb</td><td>0,0</td><td>0,0</td></tr>
+                <tr data-lang="en"><td>Unleaded petrol</td><td>0.0</td><td>0.0</td></tr>
+                <tr data-lang="fr" class="active"><td>Gasoil haute teneur en soufre</td><td>0,1</td><td>0,1</td></tr>
+                <tr data-lang="en"><td>High sulfur gasoil</td><td>0.1</td><td>0.1</td></tr>
+                <tr data-lang="fr" class="active"><td>Gasoil faible teneur en soufre</td><td>382,4</td><td>382,4</td></tr>
+                <tr data-lang="en"><td>Low sulfur gasoil</td><td>382.4</td><td>382.4</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total carburants</span><span data-lang="en">Total motor fuels</span></td><td>382,5</td><td>382,5</td></tr>
+                
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Combustibles</span><span data-lang="en">Heating fuels</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Kérosène (hors aviation)</td><td>0,0</td><td>0,0</td></tr>
+                <tr data-lang="en"><td>Kerosene (excluding aviation)</td><td>0.0</td><td>0.0</td></tr>
+                <tr data-lang="fr" class="active"><td>Fioul lourd</td><td>20,1</td><td>4,4</td></tr>
+                <tr data-lang="en"><td>Heavy fuel oil</td><td>20.1</td><td>4.4</td></tr>
+                <tr data-lang="fr" class="active"><td>GPL</td><td>9,2</td><td>1,8</td></tr>
+                <tr data-lang="en"><td>LPG</td><td>9.2</td><td>1.8</td></tr>
+                <tr data-lang="fr" class="active"><td>Gaz naturel professionnel</td><td>2.553,1</td><td>900,5</td></tr>
+                <tr data-lang="en"><td>Professional natural gas</td><td>2,553.1</td><td>900.5</td></tr>
+                <tr data-lang="fr" class="active"><td>Gaz naturel : non-professionnel</td><td>2.301,1</td><td>520,3</td></tr>
+                <tr data-lang="en"><td>Natural gas: non-professional</td><td>2,301.1</td><td>520.3</td></tr>
+                <tr data-lang="fr" class="active"><td>Houille et coke</td><td>0,7</td><td>0,2</td></tr>
+                <tr data-lang="en"><td>Coal and coke</td><td>0.7</td><td>0.2</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total combustibles</span><span data-lang="en">Total heating fuels</span></td><td>4.884,2</td><td>1.427,2</td></tr>
             </tbody>
         </table>
 
-        <p>Le Tableau 3 liste les subventions recensées dans ce rapport selon le benchmark 1, à l'exception des cas-limites. Les subventions directes s'élèvent à 13.268 millions € pour l'année 2022, soit 2,4 points de PIB. Elles étaient évaluées à 2,5% du PIB en 2018, soit une baisse de 0,1 point de pourcentage de PIB sur 5 ans. Cette baisse en pourcentage du PIB n'est cependant pas une baisse en montants absolus car le montant des subventions est reparti à la hausse en 2021, contrastant avec la tendance observée les quatre années précédentes. On observe également une hausse en 2022 mais celle-ci est liée aux mesures temporaires prises en réponse à la hausse du prix de l'énergie. Les tableaux et graphiques ci-après en donnent le détail par instrument (accises, TVA, impôts sur les revenus et transferts) et par produit.</p>
-
-        <p>Les subventions au transport aérien et maritime international s'élèvent à 976 millions en 2022, soit 0,2% du PIB. Pour le secteur aérien, le montant de l'exonération sur le kérosène est estimé à 688 millions € en 2022, en légère hausse par rapport à 2019 après une baisse due à l'impact de la crise Covid sur le secteur aérien. L'exonération pour le transport maritime est estimée en 2022 à 233 millions € pour le fioul lourd et à 55 millions € pour le diesel. Ces montants sont en baisse par rapport à 2020 et 2021. Le niveau des écarts de taux en 2022 reste cependant inférieur au niveau de 2019. Un benchmark international est utilisé dans ce cas-ci. Pour le secteur aérien, il s'agit du taux minimum fixé par la directive européenne de taxation de l'énergie applicable au kérosène (330 €/1000 l). Pour le secteur maritime, en l'absence de taux de référence applicable, nous avons opté pour le taux minimum proposé dans la proposition de réforme de cette directive publiée en juillet 2021 (0,9 €/GJ).</p>
-
-        <p>Les subventions indirectes s'élèvent à 0,7% du PIB et le poste principal est constitué par le régime fiscal des voitures de société dont le nombre a connu une croissance continue sur la période envisagée.</p>
-
-        <p>Depuis l'édition précédente (2024), les exemptions accordées aux produits fossiles à usage non-énergétique (feedstocks) sont également reprises. Cependant, en l'absence d'un taux de référence comparable à celui utilisé pour mesurer les écarts de taux en matière d'accises, aucun montant n'est repris dans cette édition-ci. Seules les quantités sont mentionnées et elles représentent en 2023 l'équivalent de 68,7% de la consommation finale d'énergie utilisée par le secteur industriel en Belgique ou 91,5% de la consommation finale d'énergie utilisée par les ménages.</p>
-
-        <h3>Tableau 3 : Détail des subventions aux énergies fossiles (en millions €) - Benchmark 1</h3>
+        <div data-lang="fr" class="active">
+            <h3>Tableau 2 : Ecarts de taux entre utilisations d'un même produit (2022, en millions €) - Benchmark 1 et 2</h3>
+        </div>
+        <div data-lang="en">
+            <h3>Table 2: Rate differences between uses of the same product (2022, in million €) - Benchmark 1 and 2</h3>
+        </div>
         <table>
             <thead>
-                <tr>
+                <tr data-lang="fr" class="active">
+                    <th>Utilisation</th>
+                    <th>Benchmark 1</th>
+                    <th>Benchmark 2</th>
+                </tr>
+                <tr data-lang="en">
+                    <th>Use</th>
+                    <th>Benchmark 1</th>
+                    <th>Benchmark 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Carburants</span><span data-lang="en">Motor fuels</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Remboursement de diesel professionnel</td><td>742,4</td><td>742,4</td></tr>
+                <tr data-lang="en"><td>Professional diesel reimbursement</td><td>742.4</td><td>742.4</td></tr>
+                <tr data-lang="fr" class="active"><td>Kérosène utilisé comme carburant</td><td>1,3</td><td>1,3</td></tr>
+                <tr data-lang="en"><td>Kerosene used as motor fuel</td><td>1.3</td><td>1.3</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total carburants</span><span data-lang="en">Total motor fuels</span></td><td>743,8</td><td>743,8</td></tr>
+
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Combustibles</span><span data-lang="en">Heating fuels</span></td></tr>
+                <tr><td colspan="3" style="font-weight: 600; padding-left: 25px; color: var(--primary-color);"><span data-lang="fr" class="active">Usage professionnel</span><span data-lang="en">Professional use</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Gasoil - utilisations industrielles et commerciales</td><td>412,5</td><td>87,3</td></tr>
+                <tr data-lang="en"><td>Gasoil - industrial and commercial uses</td><td>412.5</td><td>87.3</td></tr>
+                <tr data-lang="fr" class="active"><td>Kérosène utilisé comme combustible</td><td>36,9</td><td>7,9</td></tr>
+                <tr data-lang="en"><td>Kerosene used as heating fuel</td><td>36.9</td><td>7.9</td></tr>
+                <tr data-lang="fr" class="active"><td>Gaz naturel au taux réduit</td><td>993,9</td><td>291,2</td></tr>
+                <tr data-lang="en"><td>Natural gas at reduced rate</td><td>993.9</td><td>291.2</td></tr>
+
+                <tr><td colspan="3" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);"><span data-lang="fr" class="active">Usage non-professionnel</span><span data-lang="en">Non-professional use</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Mazout de chauffage - haute teneur en soufre</td><td>868,1</td><td>205,0</td></tr>
+                <tr data-lang="en"><td>Heating oil - high sulfur</td><td>868.1</td><td>205.0</td></tr>
+                <tr data-lang="fr" class="active"><td>Mazout de chauffage - faible teneur en soufre</td><td>1.856,8</td><td>181,5</td></tr>
+                <tr data-lang="en"><td>Heating oil - low sulfur</td><td>1,856.8</td><td>181.5</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Mazout de chauffage - total</span><span data-lang="en">Heating oil - total</span></td><td>2.724,9</td><td>386,5</td></tr>
+                <tr data-lang="fr" class="active"><td>GPL utilisé comme combustible</td><td>120,3</td><td>25,5</td></tr>
+                <tr data-lang="en"><td>LPG used as heating fuel</td><td>120.3</td><td>25.5</td></tr>
+                <tr data-lang="fr" class="active"><td>Houille et coke - exonération pour les ménages</td><td>16,5</td><td>3,8</td></tr>
+                <tr data-lang="en"><td>Coal and coke - exemption for households</td><td>16.5</td><td>3.8</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total combustibles</span><span data-lang="en">Total heating fuels</span></td><td>3.436,9</td><td>802,2</td></tr>
+            </tbody>
+        </table>
+
+        <div data-lang="fr" class="active">
+            <p>Le Tableau 3 liste les subventions recensées dans ce rapport selon le benchmark 1, à l'exception des cas-limites. Les subventions directes s'élèvent à 13.268 millions € pour l'année 2022, soit 2,4 points de PIB. Elles étaient évaluées à 2,5% du PIB en 2018, soit une baisse de 0,1 point de pourcentage de PIB sur 5 ans. Cette baisse en pourcentage du PIB n'est cependant pas une baisse en montants absolus car le montant des subventions est reparti à la hausse en 2021, contrastant avec la tendance observée les quatre années précédentes. On observe également une hausse en 2022 mais celle-ci est liée aux mesures temporaires prises en réponse à la hausse du prix de l'énergie. Les tableaux et graphiques ci-après en donnent le détail par instrument (accises, TVA, impôts sur les revenus et transferts) et par produit.</p>
+
+            <p>Les subventions au transport aérien et maritime international s'élèvent à 976 millions en 2022, soit 0,2% du PIB. Pour le secteur aérien, le montant de l'exonération sur le kérosène est estimé à 688 millions € en 2022, en légère hausse par rapport à 2019 après une baisse due à l'impact de la crise Covid sur le secteur aérien. L'exonération pour le transport maritime est estimée en 2022 à 233 millions € pour le fioul lourd et à 55 millions € pour le diesel. Ces montants sont en baisse par rapport à 2020 et 2021. Le niveau des écarts de taux en 2022 reste cependant inférieur au niveau de 2019. Un benchmark international est utilisé dans ce cas-ci. Pour le secteur aérien, il s'agit du taux minimum fixé par la directive européenne de taxation de l'énergie applicable au kérosène (330 €/1000 l). Pour le secteur maritime, en l'absence de taux de référence applicable, nous avons opté pour le taux minimum proposé dans la proposition de réforme de cette directive publiée en juillet 2021 (0,9 €/GJ).</p>
+
+            <p>Les subventions indirectes s'élèvent à 0,7% du PIB et le poste principal est constitué par le régime fiscal des voitures de société dont le nombre a connu une croissance continue sur la période envisagée.</p>
+
+            <p>Depuis l'édition précédente (2024), les exemptions accordées aux produits fossiles à usage non-énergétique (feedstocks) sont également reprises. Cependant, en l'absence d'un taux de référence comparable à celui utilisé pour mesurer les écarts de taux en matière d'accises, aucun montant n'est repris dans cette édition-ci. Seules les quantités sont mentionnées et elles représentent en 2023 l'équivalent de 68,7% de la consommation finale d'énergie utilisée par le secteur industriel en Belgique ou 91,5% de la consommation finale d'énergie utilisée par les ménages.</p>
+
+            <h3>Tableau 3 : Détail des subventions aux énergies fossiles (en millions €) - Benchmark 1</h3>
+        </div>
+        <div data-lang="en">
+            <p>Table 3 lists the subsidies identified in this report according to benchmark 1, with the exception of borderline cases. Direct subsidies amounted to €13,268 million for the year 2022, or 2.4 GDP points. They were evaluated at 2.5% of GDP in 2018, a drop of 0.1 GDP percentage point over 5 years. This drop in percentage of GDP is however not a drop in absolute amounts because the amount of subsidies rose again in 2021, contrasting with the trend observed in the four previous years. An increase is also observed in 2022, but this is linked to temporary measures taken in response to the rise in energy prices. The tables and charts below give details by instrument (excise duties, VAT, income taxes and transfers) and by product.</p>
+
+            <p>Subsidies for international air and maritime transport amounted to 976 million in 2022, or 0.2% of GDP. For the aviation sector, the amount of the exemption on kerosene is estimated at €688 million in 2022, slightly up compared to 2019 after a drop due to the impact of the Covid crisis on the aviation sector. The exemption for maritime transport is estimated in 2022 at €233 million for heavy fuel oil and €55 million for diesel. These amounts are down compared to 2020 and 2021. The level of rate differences in 2022 remains however lower than the level of 2019. An international benchmark is used in this case. For the aviation sector, it is the minimum rate set by the European energy taxation directive applicable to kerosene (€330/1000 l). For the maritime sector, in the absence of an applicable reference rate, we opted for the minimum rate proposed in the reform proposal for this directive published in July 2021 (€0.9/GJ).</p>
+
+            <p>Indirect subsidies amounted to 0.7% of GDP and the main item consists of the tax regime for company cars, the number of which has experienced continuous growth over the period considered.</p>
+
+            <p>Since the previous edition (2024), exemptions granted to fossil products for non-energy use (feedstocks) are also included. However, in the absence of a reference rate comparable to that used to measure rate differences in excise duties, no amount is included in this edition. Only quantities are mentioned and they represent in 2023 the equivalent of 68.7% of final energy consumption used by the industrial sector in Belgium or 91.5% of final energy consumption used by households.</p>
+
+            <h3>Table 3: Detail of fossil fuel subsidies (in million €) - Benchmark 1</h3>
+        </div>
+        <table>
+            <thead>
+                <tr data-lang="fr" class="active">
                     <th>Catégorie / Instrument</th>
+                    <th>2018</th>
+                    <th>2019</th>
+                    <th>2020</th>
+                    <th>2021</th>
+                    <th>2022</th>
+                </tr>
+                <tr data-lang="en">
+                    <th>Category / Instrument</th>
                     <th>2018</th>
                     <th>2019</th>
                     <th>2020</th>
@@ -436,248 +634,450 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="subheader"><td colspan="6">Subventions directes</td></tr>
-                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color);">Transferts - mesures permanentes</td></tr>
-                <tr><td>Tarif social Gaz naturel</td><td>74,0</td><td>89,0</td><td>79,0</td><td>95,3</td><td>428,2</td></tr>
-                <tr><td>Tarif social - Electricité (*)</td><td>33,8</td><td>36,7</td><td>35,2</td><td>28,0</td><td>241,5</td></tr>
-                <tr><td>Fonds CPAS de support d'accès à l'énergie - gaz naturel</td><td>22,0</td><td>25,0</td><td>25,1</td><td>25,2</td><td>24,1</td></tr>
-                <tr><td>Fonds CPAS de support d'accès à l'énergie - électricité (*)</td><td>10,0</td><td>10,9</td><td>11,7</td><td>10,8</td><td>42,0</td></tr>
-                <tr><td>Fonds Mazout</td><td>16,9</td><td>16,6</td><td>14,6</td><td>13,8</td><td>21,1</td></tr>
-                <tr class="total-row"><td>Total Transferts permanents</td><td>156,7</td><td>178,2</td><td>165,6</td><td>173,1</td><td>756,8</td></tr>
+                <tr class="subheader"><td colspan="6"><span data-lang="fr" class="active">Subventions directes</span><span data-lang="en">Direct subsidies</span></td></tr>
+                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color);"><span data-lang="fr" class="active">Transferts - mesures permanentes</span><span data-lang="en">Transfers - permanent measures</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Tarif social Gaz naturel</td><td>74,0</td><td>89,0</td><td>79,0</td><td>95,3</td><td>428,2</td></tr>
+                <tr data-lang="en"><td>Natural gas social tariff</td><td>74.0</td><td>89.0</td><td>79.0</td><td>95.3</td><td>428.2</td></tr>
+                <tr data-lang="fr" class="active"><td>Tarif social - Electricité (*)</td><td>33,8</td><td>36,7</td><td>35,2</td><td>28,0</td><td>241,5</td></tr>
+                <tr data-lang="en"><td>Electricity social tariff (*)</td><td>33.8</td><td>36.7</td><td>35.2</td><td>28.0</td><td>241.5</td></tr>
+                <tr data-lang="fr" class="active"><td>Fonds CPAS de support d'accès à l'énergie - gaz naturel</td><td>22,0</td><td>25,0</td><td>25,1</td><td>25,2</td><td>24,1</td></tr>
+                <tr data-lang="en"><td>CPAS energy access support fund - natural gas</td><td>22.0</td><td>25.0</td><td>25.1</td><td>25.2</td><td>24.1</td></tr>
+                <tr data-lang="fr" class="active"><td>Fonds CPAS de support d'accès à l'énergie - électricité (*)</td><td>10,0</td><td>10,9</td><td>11,7</td><td>10,8</td><td>42,0</td></tr>
+                <tr data-lang="en"><td>CPAS energy access support fund - electricity (*)</td><td>10.0</td><td>10.9</td><td>11.7</td><td>10.8</td><td>42.0</td></tr>
+                <tr data-lang="fr" class="active"><td>Fonds Mazout</td><td>16,9</td><td>16,6</td><td>14,6</td><td>13,8</td><td>21,1</td></tr>
+                <tr data-lang="en"><td>Heating oil Fund</td><td>16.9</td><td>16.6</td><td>14.6</td><td>13.8</td><td>21.1</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total Transferts permanents</span><span data-lang="en">Total Permanent Transfers</span></td><td>156,7</td><td>178,2</td><td>165,6</td><td>173,1</td><td>756,8</td></tr>
                 
-                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);">Transferts - mesures temporaires</td></tr>
-                <tr><td>Tarif social élargi - gaz naturel (BIM)</td><td>-</td><td>-</td><td>-</td><td>154,8</td><td>717,2</td></tr>
-                <tr><td>Tarif social élargi - électricité (BIM) (*)</td><td>-</td><td>-</td><td>-</td><td>38,3</td><td>458,7</td></tr>
-                <tr><td>Prime unique de 80€ (*)</td><td>-</td><td>-</td><td>-</td><td>22,7</td><td>0,0</td></tr>
-                <tr class="total-row"><td>Total Transferts temporaires</td><td>-</td><td>-</td><td>-</td><td>215,8</td><td>1.175,9</td></tr>
+                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);"><span data-lang="fr" class="active">Transferts - mesures temporaires</span><span data-lang="en">Transfers - temporary measures</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Tarif social élargi - gaz naturel (BIM)</td><td>-</td><td>-</td><td>-</td><td>154,8</td><td>717,2</td></tr>
+                <tr data-lang="en"><td>Extended social tariff - natural gas (BIM)</td><td>-</td><td>-</td><td>-</td><td>154.8</td><td>717.2</td></tr>
+                <tr data-lang="fr" class="active"><td>Tarif social élargi - électricité (BIM) (*)</td><td>-</td><td>-</td><td>-</td><td>38,3</td><td>458,7</td></tr>
+                <tr data-lang="en"><td>Extended social tariff - electricity (BIM) (*)</td><td>-</td><td>-</td><td>-</td><td>38.3</td><td>458.7</td></tr>
+                <tr data-lang="fr" class="active"><td>Prime unique de 80€ (*)</td><td>-</td><td>-</td><td>-</td><td>22,7</td><td>0,0</td></tr>
+                <tr data-lang="en"><td>One-off €80 premium (*)</td><td>-</td><td>-</td><td>-</td><td>22.7</td><td>0.0</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total Transferts temporaires</span><span data-lang="en">Total Temporary Transfers</span></td><td>-</td><td>-</td><td>-</td><td>215,8</td><td>1.175,9</td></tr>
 
-                <tr class="subheader"><td colspan="6">Impôts sur le revenu</td></tr>
-                <tr><td>Cartes carburant</td><td>472,4</td><td>512,8</td><td>521,9</td><td>618,9</td><td>793,9</td></tr>
-                <tr class="total-row"><td>Total Impôts sur le revenu</td><td>472,4</td><td>512,8</td><td>521,9</td><td>618,9</td><td>793,9</td></tr>
+                <tr class="subheader"><td colspan="6"><span data-lang="fr" class="active">Impôts sur le revenu</span><span data-lang="en">Income taxes</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Cartes carburant</td><td>472,4</td><td>512,8</td><td>521,9</td><td>618,9</td><td>793,9</td></tr>
+                <tr data-lang="en"><td>Fuel cards</td><td>472.4</td><td>512.8</td><td>521.9</td><td>618.9</td><td>793.9</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total Impôts sur le revenu</span><span data-lang="en">Total Income taxes</span></td><td>472,4</td><td>512,8</td><td>521,9</td><td>618,9</td><td>793,9</td></tr>
 
-                <tr class="subheader"><td colspan="6">TVA</td></tr>
-                <tr><td>Taux réduit sur le charbon</td><td>3,6</td><td>2,9</td><td>2,4</td><td>2,4</td><td>5,1</td></tr>
-                <tr class="total-row"><td>Total TVA</td><td>3,6</td><td>2,9</td><td>2,4</td><td>2,4</td><td>5,1</td></tr>
+                <tr class="subheader"><td colspan="6"><span data-lang="fr" class="active">TVA</span><span data-lang="en">VAT</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Taux réduit sur le charbon</td><td>3,6</td><td>2,9</td><td>2,4</td><td>2,4</td><td>5,1</td></tr>
+                <tr data-lang="en"><td>Reduced rate on coal</td><td>3.6</td><td>2.9</td><td>2.4</td><td>2.4</td><td>5.1</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total TVA</span><span data-lang="en">Total VAT</span></td><td>3,6</td><td>2,9</td><td>2,4</td><td>2,4</td><td>5,1</td></tr>
 
-                <tr class="subheader"><td colspan="6">Accises</td></tr>
-                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color);">Ecarts de taux entre produits</td></tr>
-                <tr><td>Gasoil</td><td>696,0</td><td>429,7</td><td>252,0</td><td>368,9</td><td>382,4</td></tr>
-                <tr><td>Kérosène</td><td>0,0</td><td>0,0</td><td>0,0</td><td>0,0</td><td>0,0</td></tr>
-                <tr><td>Fioul lourd</td><td>26,0</td><td>20,1</td><td>52,8</td><td>16,9</td><td>20,1</td></tr>
-                <tr><td>LPG</td><td>6,7</td><td>5,4</td><td>6,0</td><td>9,7</td><td>9,2</td></tr>
-                <tr><td>Gaz naturel</td><td>4.848,1</td><td>4.741,5</td><td>4.538,0</td><td>5.124,3</td><td>4.854,2</td></tr>
-                <tr><td>Houille et coke</td><td>10,6</td><td>57,4</td><td>0,3</td><td>0,2</td><td>0,7</td></tr>
-                <tr class="total-row"><td>Sous-total écarts de taux</td><td>5.587,4</td><td>5.254,1</td><td>4.849,2</td><td>5.520,1</td><td>5.266,6</td></tr>
+                <tr class="subheader"><td colspan="6"><span data-lang="fr" class="active">Accises</span><span data-lang="en">Excise duties</span></td></tr>
+                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color);"><span data-lang="fr" class="active">Ecarts de taux entre produits</span><span data-lang="en">Rate differences between products</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Gasoil</td><td>696,0</td><td>429,7</td><td>252,0</td><td>368,9</td><td>382,4</td></tr>
+                <tr data-lang="en"><td>Gasoil</td><td>696.0</td><td>429.7</td><td>252.0</td><td>368.9</td><td>382.4</td></tr>
+                <tr data-lang="fr" class="active"><td>Kérosène</td><td>0,0</td><td>0,0</td><td>0,0</td><td>0,0</td><td>0,0</td></tr>
+                <tr data-lang="en"><td>Kerosene</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr data-lang="fr" class="active"><td>Fioul lourd</td><td>26,0</td><td>20,1</td><td>52,8</td><td>16,9</td><td>20,1</td></tr>
+                <tr data-lang="en"><td>Heavy fuel oil</td><td>26.0</td><td>20.1</td><td>52.8</td><td>16.9</td><td>20.1</td></tr>
+                <tr data-lang="fr" class="active"><td>LPG</td><td>6,7</td><td>5,4</td><td>6,0</td><td>9,7</td><td>9,2</td></tr>
+                <tr data-lang="en"><td>LPG</td><td>6.7</td><td>5.4</td><td>6.0</td><td>9.7</td><td>9.2</td></tr>
+                <tr data-lang="fr" class="active"><td>Gaz naturel</td><td>4.848,1</td><td>4.741,5</td><td>4.538,0</td><td>5.124,3</td><td>4.854,2</td></tr>
+                <tr data-lang="en"><td>Natural gas</td><td>4,848.1</td><td>4,741.5</td><td>4,538.0</td><td>5,124.3</td><td>4,854.2</td></tr>
+                <tr data-lang="fr" class="active"><td>Houille et coke</td><td>10,6</td><td>57,4</td><td>0,3</td><td>0,2</td><td>0,7</td></tr>
+                <tr data-lang="en"><td>Coal and coke</td><td>10.6</td><td>57.4</td><td>0.3</td><td>0.2</td><td>0.7</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Sous-total écarts de taux</span><span data-lang="en">Sub-total rate differences</span></td><td>5.587,4</td><td>5.254,1</td><td>4.849,2</td><td>5.520,1</td><td>5.266,6</td></tr>
 
-                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);">Taux particuliers pour un même produit</td></tr>
-                <tr><td>Mazout de chauffage</td><td>2.266,0</td><td>2.263,3</td><td>2.129,8</td><td>2.096,5</td><td>1.856,8</td></tr>
-                <tr><td>Gasoil - utilisations industrielles et commerciales</td><td>386,3</td><td>415,6</td><td>383,7</td><td>375,0</td><td>412,5</td></tr>
-                <tr><td>Remboursement de diesel professionnel</td><td>668,2</td><td>939,3</td><td>1.220,5</td><td>905,5</td><td>742,4</td></tr>
-                <tr><td>Kérosène utilisé comme combustible</td><td>37,0</td><td>34,9</td><td>32,5</td><td>41,5</td><td>36,9</td></tr>
-                <tr><td>Kérosène utilisé comme carburant</td><td>4,6</td><td>3,4</td><td>2,3</td><td>2,4</td><td>1,3</td></tr>
-                <tr><td>LPG utilisé comme combustible</td><td>120,3</td><td>108,6</td><td>138,8</td><td>140,0</td><td>120,3</td></tr>
-                <tr><td>Gaz naturel au taux réduit</td><td>1.250,2</td><td>1.091,0</td><td>1.031,1</td><td>1.190,6</td><td>1.295,2</td></tr>
-                <tr><td>Houille et coke - exonération pour les ménages</td><td>50,6</td><td>27,8</td><td>20,8</td><td>22,1</td><td>16,5</td></tr>
-                <tr class="total-row"><td>Sous-total taux particuliers</td><td>4.783,2</td><td>5.093,0</td><td>4.750,4</td><td>4.773,7</td><td>4.482,0</td></tr>
+                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);"><span data-lang="fr" class="active">Taux particuliers pour un même produit</span><span data-lang="en">Specific rates for the same product</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Mazout de chauffage</td><td>2.266,0</td><td>2.263,3</td><td>2.129,8</td><td>2.096,5</td><td>1.856,8</td></tr>
+                <tr data-lang="en"><td>Heating oil</td><td>2,266.0</td><td>2,263.3</td><td>2,129.8</td><td>2,096.5</td><td>1,856.8</td></tr>
+                <tr data-lang="fr" class="active"><td>Gasoil - utilisations industrielles et commerciales</td><td>386,3</td><td>415,6</td><td>383,7</td><td>375,0</td><td>412,5</td></tr>
+                <tr data-lang="en"><td>Gasoil - industrial and commercial uses</td><td>386.3</td><td>415.6</td><td>383.7</td><td>375.0</td><td>412.5</td></tr>
+                <tr data-lang="fr" class="active"><td>Remboursement de diesel professionnel</td><td>668,2</td><td>939,3</td><td>1.220,5</td><td>905,5</td><td>742,4</td></tr>
+                <tr data-lang="en"><td>Professional diesel reimbursement</td><td>668.2</td><td>939.3</td><td>1,220.5</td><td>905.5</td><td>742.4</td></tr>
+                <tr data-lang="fr" class="active"><td>Kérosène utilisé comme combustible</td><td>37,0</td><td>34,9</td><td>32,5</td><td>41,5</td><td>36,9</td></tr>
+                <tr data-lang="en"><td>Kerosene used as heating fuel</td><td>37.0</td><td>34.9</td><td>32.5</td><td>41.5</td><td>36.9</td></tr>
+                <tr data-lang="fr" class="active"><td>Kérosène utilisé comme carburant</td><td>4,6</td><td>3,4</td><td>2,3</td><td>2,4</td><td>1,3</td></tr>
+                <tr data-lang="en"><td>Kerosene used as motor fuel</td><td>4.6</td><td>3.4</td><td>2.3</td><td>2.4</td><td>1.3</td></tr>
+                <tr data-lang="fr" class="active"><td>LPG utilisé comme combustible</td><td>120,3</td><td>108,6</td><td>138,8</td><td>140,0</td><td>120,3</td></tr>
+                <tr data-lang="en"><td>LPG used as heating fuel</td><td>120.3</td><td>108.6</td><td>138.8</td><td>140.0</td><td>120.3</td></tr>
+                <tr data-lang="fr" class="active"><td>Gaz naturel au taux réduit</td><td>1.250,2</td><td>1.091,0</td><td>1.031,1</td><td>1.190,6</td><td>1.295,2</td></tr>
+                <tr data-lang="en"><td>Natural gas at reduced rate</td><td>1,250.2</td><td>1,091.0</td><td>1,031.1</td><td>1,190.6</td><td>1,295.2</td></tr>
+                <tr data-lang="fr" class="active"><td>Houille et coke - exonération pour les ménages</td><td>50,6</td><td>27,8</td><td>20,8</td><td>22,1</td><td>16,5</td></tr>
+                <tr data-lang="en"><td>Coal and coke - exemption for households</td><td>50.6</td><td>27.8</td><td>20.8</td><td>22.1</td><td>16.5</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Sous-total taux particuliers</span><span data-lang="en">Sub-total specific rates</span></td><td>4.783,2</td><td>5.093,0</td><td>4.750,4</td><td>4.773,7</td><td>4.482,0</td></tr>
 
-                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);">Subventions sur consommation intermédiaire</td></tr>
-                <tr><td>Fabrication, développement, essais et entretien aéronefs/navires</td><td>28,8</td><td>36,9</td><td>10,0</td><td>7,5</td><td>9,0</td></tr>
-                <tr><td>Transport ferroviaire</td><td>23,0</td><td>15,6</td><td>17,7</td><td>16,0</td><td>15,7</td></tr>
-                <tr><td>Navigation intérieure</td><td>93,1</td><td>84,3</td><td>86,6</td><td>86,1</td><td>90,7</td></tr>
-                <tr><td>Activités de dragage</td><td>70,3</td><td>75,0</td><td>51,5</td><td>45,9</td><td>51,6</td></tr>
-                <tr><td>Travaux agricoles et horticoles, pisciculture et sylviculture</td><td>459,9</td><td>566,3</td><td>557,6</td><td>569,8</td><td>620,5</td></tr>
-                <tr class="total-row"><td>Sous-total conso. intermédiaire</td><td>675,1</td><td>782,4</td><td>719,1</td><td>725,3</td><td>787,4</td></tr>
+                <tr><td colspan="6" style="font-weight: 600; padding-left: 25px; color: var(--primary-color); border-top: 1px solid var(--border-light);"><span data-lang="fr" class="active">Subventions sur consommation intermédiaire</span><span data-lang="en">Subsidies on intermediate consumption</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Fabrication, développement, essais et entretien aéronefs/navires</td><td>28,8</td><td>36,9</td><td>10,0</td><td>7,5</td><td>9,0</td></tr>
+                <tr data-lang="en"><td>Manufacture, development, testing and maintenance of aircraft/ships</td><td>28.8</td><td>36.9</td><td>10.0</td><td>7.5</td><td>9.0</td></tr>
+                <tr data-lang="fr" class="active"><td>Transport ferroviaire</td><td>23,0</td><td>15,6</td><td>17,7</td><td>16,0</td><td>15,7</td></tr>
+                <tr data-lang="en"><td>Rail transport</td><td>23.0</td><td>15.6</td><td>17.7</td><td>16.0</td><td>15.7</td></tr>
+                <tr data-lang="fr" class="active"><td>Navigation intérieure</td><td>93,1</td><td>84,3</td><td>86,6</td><td>86,1</td><td>90,7</td></tr>
+                <tr data-lang="en"><td>Inland navigation</td><td>93.1</td><td>84.3</td><td>86.6</td><td>86.1</td><td>90.7</td></tr>
+                <tr data-lang="fr" class="active"><td>Activités de dragage</td><td>70,3</td><td>75,0</td><td>51,5</td><td>45,9</td><td>51,6</td></tr>
+                <tr data-lang="en"><td>Dredging activities</td><td>70.3</td><td>75.0</td><td>51.5</td><td>45.9</td><td>51.6</td></tr>
+                <tr data-lang="fr" class="active"><td>Travaux agricoles et horticoles, pisciculture et sylviculture</td><td>459,9</td><td>566,3</td><td>557,6</td><td>569,8</td><td>620,5</td></tr>
+                <tr data-lang="en"><td>Agricultural and horticultural work, fish farming and forestry</td><td>459.9</td><td>566.3</td><td>557.6</td><td>569.8</td><td>620.5</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Sous-total conso. intermédiaire</span><span data-lang="en">Sub-total intermediate cons.</span></td><td>675,1</td><td>782,4</td><td>719,1</td><td>725,3</td><td>787,4</td></tr>
                 
-                <tr class="total-row"><td>Total Accises</td><td>11.045,7</td><td>10.786,9</td><td>10.661,3</td><td>11.019,0</td><td>10.536,0</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total Accises</span><span data-lang="en">Total Excise duties</span></td><td>11.045,7</td><td>10.786,9</td><td>10.661,3</td><td>11.019,0</td><td>10.536,0</td></tr>
 
-                <tr class="total-row" style="font-size: 1.05rem;"><td>TOTAL DES SUBVENTIONS DIRECTES</td><td>11.678,4</td><td>11.351,2</td><td>11.480,9</td><td>12.029,2</td><td>13.267,8</td></tr>
-                <tr class="total-row"><td>En % PIB</td><td>2,5%</td><td>2,4%</td><td>2,5%</td><td>2,4%</td><td>2,4%</td></tr>
+                <tr class="total-row" style="font-size: 1.05rem;"><td><span data-lang="fr" class="active">TOTAL DES SUBVENTIONS DIRECTES</span><span data-lang="en">TOTAL DIRECT SUBSIDIES</span></td><td>11.678,4</td><td>11.351,2</td><td>11.480,9</td><td>12.029,2</td><td>13.267,8</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">En % PIB</span><span data-lang="en">In % of GDP</span></td><td>2,5%</td><td>2,4%</td><td>2,5%</td><td>2,4%</td><td>2,4%</td></tr>
 
-                <tr class="subheader"><td colspan="6">Subventions au transport aérien et maritime international</td></tr>
-                <tr><td>Exemption accises kérosène - aviation</td><td>673,0</td><td>677,0</td><td>471,8</td><td>594,2</td><td>687,7</td></tr>
-                <tr><td>Exemption accises fioul lourd - transport maritime</td><td>304,3</td><td>188,1</td><td>268,1</td><td>241,9</td><td>232,8</td></tr>
-                <tr><td>Exemption accises diesel - transport maritime</td><td>49,8</td><td>52,1</td><td>44,6</td><td>57,6</td><td>55,2</td></tr>
-                <tr class="total-row"><td>Total transport aérien et maritime intl.</td><td>1.027,0</td><td>989,6</td><td>712,0</td><td>893,7</td><td>975,7</td></tr>
-                <tr class="total-row"><td>En % PIB</td><td>0,2%</td><td>0,2%</td><td>0,2%</td><td>0,2%</td><td>0,2%</td></tr>
+                <tr class="subheader"><td colspan="6"><span data-lang="fr" class="active">Subventions au transport aérien et maritime international</span><span data-lang="en">Subsidies for international air and maritime transport</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Exemption accises kérosène - aviation</td><td>673,0</td><td>677,0</td><td>471,8</td><td>594,2</td><td>687,7</td></tr>
+                <tr data-lang="en"><td>Excise exemption kerosene - aviation</td><td>673.0</td><td>677.0</td><td>471.8</td><td>594.2</td><td>687.7</td></tr>
+                <tr data-lang="fr" class="active"><td>Exemption accises fioul lourd - transport maritime</td><td>304,3</td><td>188,1</td><td>268,1</td><td>241,9</td><td>232,8</td></tr>
+                <tr data-lang="en"><td>Excise exemption heavy fuel oil - maritime transport</td><td>304.3</td><td>188.1</td><td>268.1</td><td>241.9</td><td>232.8</td></tr>
+                <tr data-lang="fr" class="active"><td>Exemption accises diesel - transport maritime</td><td>49,8</td><td>52,1</td><td>44,6</td><td>57,6</td><td>55,2</td></tr>
+                <tr data-lang="en"><td>Excise exemption diesel - maritime transport</td><td>49.8</td><td>52.1</td><td>44.6</td><td>57.6</td><td>55.2</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total transport aérien et maritime intl.</span><span data-lang="en">Total international air and maritime transport</span></td><td>1.027,0</td><td>989,6</td><td>712,0</td><td>893,7</td><td>975,7</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">En % PIB</span><span data-lang="en">In % of GDP</span></td><td>0,2%</td><td>0,2%</td><td>0,2%</td><td>0,2%</td><td>0,2%</td></tr>
 
-                <tr class="subheader"><td colspan="6">Subventions indirectes</td></tr>
-                <tr><td>TVA - exonération billets d'avion</td><td>222,2</td><td>228,3</td><td>61,9</td><td>86,8</td><td>180,2</td></tr>
-                <tr class="total-row"><td>Total des subventions indirectes</td><td>222,2</td><td>228,3</td><td>61,9</td><td>86,8</td><td>180,2</td></tr>
-                <tr class="total-row"><td>En % PIB</td><td>0,05%</td><td>0,05%</td><td>0,01%</td><td>0,02%</td><td>0,03%</td></tr>
+                <tr class="subheader"><td colspan="6"><span data-lang="fr" class="active">Subventions indirectes</span><span data-lang="en">Indirect subsidies</span></td></tr>
+                <tr data-lang="fr" class="active"><td>TVA - exonération billets d'avion</td><td>222,2</td><td>228,3</td><td>61,9</td><td>86,8</td><td>180,2</td></tr>
+                <tr data-lang="en"><td>VAT - exemption on plane tickets</td><td>222.2</td><td>228.3</td><td>61.9</td><td>86.8</td><td>180.2</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total des subventions indirectes</span><span data-lang="en">Total indirect subsidies</span></td><td>222,2</td><td>228,3</td><td>61,9</td><td>86,8</td><td>180,2</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">En % PIB</span><span data-lang="en">In % of GDP</span></td><td>0,05%</td><td>0,05%</td><td>0,01%</td><td>0,02%</td><td>0,03%</td></tr>
 
-                <tr class="subheader"><td colspan="6">Subventions préjudiciables à l'environnement (EHS)</td></tr>
-                <tr><td>Voitures de sociétés</td><td>2.627,2</td><td>2.780,3</td><td>3.226,3</td><td>3.307,5</td><td>3.434,2</td></tr>
-                <tr class="total-row"><td>Total des subventions EHS</td><td>2.627,2</td><td>2.780,3</td><td>3.226,3</td><td>3.307,5</td><td>3.434,2</td></tr>
-                <tr class="total-row"><td>En % PIB</td><td>0,5%</td><td>0,6%</td><td>0,6%</td><td>0,6%</td><td>0,6%</td></tr>
+                <tr class="subheader"><td colspan="6"><span data-lang="fr" class="active">Subventions préjudiciables à l'environnement (EHS)</span><span data-lang="en">Environmentally harmful subsidies (EHS)</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Voitures de sociétés</td><td>2.627,2</td><td>2.780,3</td><td>3.226,3</td><td>3.307,5</td><td>3.434,2</td></tr>
+                <tr data-lang="en"><td>Company cars</td><td>2,627.2</td><td>2,780.3</td><td>3,226.3</td><td>3,307.5</td><td>3,434.2</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total des subventions EHS</span><span data-lang="en">Total EHS subsidies</span></td><td>2.627,2</td><td>2.780,3</td><td>3.226,3</td><td>3.307,5</td><td>3.434,2</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">En % PIB</span><span data-lang="en">In % of GDP</span></td><td>0,5%</td><td>0,6%</td><td>0,6%</td><td>0,6%</td><td>0,6%</td></tr>
             </tbody>
         </table>
-        <p style="font-size: 0.85rem; color: var(--text-muted);"><em>(*) Tarif social électricité, tarif social élargi électricité, fonds CPAS de support à l'énergie électricité et forfait unique de 80 euros prise en compte du production mix.<sup>6</sup></em></p>
+        <div data-lang="fr" class="active">
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>(*) Tarif social électricité, tarif social élargi électricité, fonds CPAS de support à l'énergie électricité et forfait unique de 80 euros prise en compte du production mix.<sup>6</sup></em></p>
 
-        <p>Le Tableau 3 détaille les subventions directes selon l'instrument utilisé et cette catégorisation fait également l'objet du Graphique 2.</p>
+            <p>Le Tableau 3 détaille les subventions directes selon l'instrument utilisé et cette catégorisation fait également l'objet du Graphique 2.</p>
 
-        <p>Les subventions octroyées sous forme de transferts - mesures permanentes - s'élèvent à 757 millions € en 2022 et connaissent un pic suite à l'augmentation du tarif social. Quant aux transferts accordés de façon temporaire, leur montant global avoisine 1.176 millions € en 2022. Il s'agit de transferts aux particuliers et ces subventions ont des objectifs sociaux. Les cartes carburant sont la seule subvention directe recensée qui est octroyée par les impôts sur les revenus. Le montant estimé est de 794 millions € en 2022 et il s'inscrit en hausse constante sur les cinq dernières années du fait du nombre croissant de voitures de société. En 2021 et 2022, ce montant estimé est sensiblement plus élevé non seulement du fait de la hausse continue du nombre de voitures de sociétés mais aussi et surtout de la hausse très importante du prix des carburants. Pour la TVA, la seule subvention directe à recenser est le taux réduit appliqué sur la consommation finale de charbon et le montant est dérisoire, du fait de la très faible utilisation de ce vecteur énergétique.</p>
+            <p>Les subventions octroyées sous forme de transferts - mesures permanentes - s'élèvent à 757 millions € en 2022 et connaissent un pic suite à l'augmentation du tarif social. Quant aux transferts accordés de façon temporaire, leur montant global avoisine 1.176 millions € en 2022. Il s'agit de transferts aux particuliers et ces subventions ont des objectifs sociaux. Les cartes carburant sont la seule subvention directe recensée qui est octroyée par les impôts sur les revenus. Le montant estimé est de 794 millions € en 2022 et il s'inscrit en hausse constante sur les cinq dernières années du fait du nombre croissant de voitures de société. En 2021 et 2022, ce montant estimé est sensiblement plus élevé non seulement du fait de la hausse continue du nombre de voitures de sociétés mais aussi et surtout de la hausse très importante du prix des carburants. Pour la TVA, la seule subvention directe à recenser est le taux réduit appliqué sur la consommation finale de charbon et le montant est dérisoire, du fait de la très faible utilisation de ce vecteur énergétique.</p>
+        </div>
+        <div data-lang="en">
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>(*) Electricity social tariff, extended electricity social tariff, CPAS electricity energy support fund and one-off €80 lump sum taking into account the production mix.<sup>6</sup></em></p>
+
+            <p>Table 3 details direct subsidies according to the instrument used and this categorization is also the subject of Chart 2.</p>
+
+            <p>Subsidies granted in the form of transfers - permanent measures - amounted to €757 million in 2022 and experienced a peak following the increase in the social tariff. As for transfers granted temporarily, their overall amount was around €1,176 million in 2022. These are transfers to individuals and these subsidies have social objectives. Fuel cards are the only direct subsidy listed that is granted through income taxes. The estimated amount is €794 million in 2022 and has been rising steadily over the last five years due to the growing number of company cars. In 2021 and 2022, this estimated amount is significantly higher not only because of the continuous increase in the number of company cars but also and above all because of the very significant increase in fuel prices. For VAT, the only direct subsidy to be listed is the reduced rate applied to final coal consumption and the amount is derisory, due to the very low use of this energy vector.</p>
+        </div>
 
         <div class="chart-container">
             <canvas id="graphique2"></canvas>
         </div>
 
-        <p>Les accises sont clairement l'instrument majeur utilisé pour octroyer les subventions aux énergies fossiles. Les exonérations et taux réduits d'accises sont évalués à 10.536 millions € en 2022 et sont en diminution par rapport à 2021 suite à une baisse des volumes consommés.</p>
+        <div data-lang="fr" class="active">
+            <p>Les accises sont clairement l'instrument majeur utilisé pour octroyer les subventions aux énergies fossiles. Les exonérations et taux réduits d'accises sont évalués à 10.536 millions € en 2022 et sont en diminution par rapport à 2021 suite à une baisse des volumes consommés.</p>
 
-        <p>Comme pour toutes les dépenses fiscales, le montant estimé est fonction du point de référence retenu, le « benchmark ». Comme indiqué ci-dessus, nous avons considéré qu'il n'y avait pas d'arguments justifiant des écarts de taux de taxation entre produits énergétiques. Nous avons alors retenu comme point de référence le taux de taxation de l'essence sans plomb et réalisé la comparaison des taux en exprimant ceux-ci en unité énergétique.</p>
+            <p>Comme pour toutes les dépenses fiscales, le montant estimé est fonction du point de référence retenu, le « benchmark ». Comme indiqué ci-dessus, nous avons considéré qu'il n'y avait pas d'arguments justifiant des écarts de taux de taxation entre produits énergétiques. Nous avons alors retenu comme point de référence le taux de taxation de l'essence sans plomb et réalisé la comparaison des taux en exprimant ceux-ci en unité énergétique.</p>
+        </div>
+        <div data-lang="en">
+            <p>Excise duties are clearly the major instrument used to grant fossil fuel subsidies. Excise exemptions and reduced rates are evaluated at €10,536 million in 2022 and are decreasing compared to 2021 following a drop in volumes consumed.</p>
+
+            <p>As for all tax expenditures, the estimated amount depends on the chosen reference point, the "benchmark". As indicated above, we considered that there were no arguments justifying tax rate differences between energy products. We then chose the unleaded petrol tax rate as the reference point and performed the rate comparison by expressing them in energy units.</p>
+        </div>
 
         <div class="chart-container">
             <canvas id="graphique3"></canvas>
         </div>
 
-        <p>Le Graphique 3 détaille les subventions liées aux accises en plusieurs rubriques. La première provient des écarts de taux entre produits. Le montant correspondant est de 5.267 millions € en 2022<sup>7</sup>, en baisse par rapport à 2021. La diminution observée jusqu'en 2019 s'explique par la hausse des accises sur le diesel qui ont convergé vers celles appliquées à l'essence sans plomb, qui constituent ici le point de référence<sup>8</sup>. La part la plus importante des subventions provenant des écarts de taux entre produits provient toutefois de la faible taxation du gaz naturel. Depuis 2020, le montant du subside est principalement influencé par les quantités consommées que ce soit pour le gaz naturel ou le gasoil. Celles-ci sont en forte baisse en 2020 et 2022 et en forte hausse en 2021 suite à la crise du Covid et la reprise qui l'a suivie et également à l'éclatement du conflit en Ukraine.</p>
+        <div data-lang="fr" class="active">
+            <p>Le Graphique 3 détaille les subventions liées aux accises en plusieurs rubriques. La première provient des écarts de taux entre produits. Le montant correspondant est de 5.267 millions € en 2022<sup>7</sup>, en baisse par rapport à 2021. La diminution observée jusqu'en 2019 s'explique par la hausse des accises sur le diesel qui ont convergé vers celles appliquées à l'essence sans plomb, qui constituent ici le point de référence<sup>8</sup>. La part la plus importante des subventions provenant des écarts de taux entre produits provient toutefois de la faible taxation du gaz naturel. Depuis 2020, le montant du subside est principalement influencé par les quantités consommées que ce soit pour le gaz naturel ou le gasoil. Celles-ci sont en forte baisse en 2020 et 2022 et en forte hausse en 2021 suite à la crise du Covid et la reprise qui l'a suivie et également à l'éclatement du conflit en Ukraine.</p>
 
-        <p>Les taux particuliers pour un même produit font l'objet de la deuxième rubrique. Ces subventions sont recensées dans l'Inventaire fédéral des dépenses fiscales mais le montant de la subvention n'est pas le même que dans ce rapport, du fait de points de référence différents<sup>9</sup>. Le montant de cette catégorie de subventions est estimé à 4.482 millions € en 2022 et s'inscrit lui en baisse par rapport à 2020 et 2021. Les trois principaux postes sont l'exonération d'accises sur le mazout de chauffage, le taux réduit pour le gaz naturel pour les usages industriels et les remboursements de diesel professionnel.</p>
+            <p>Les taux particuliers pour un même produit font l'objet de la deuxième rubrique. Ces subventions sont recensées dans l'Inventaire fédéral des dépenses fiscales mais le montant de la subvention n'est pas le même que dans ce rapport, du fait de points de référence différents<sup>9</sup>. Le montant de cette catégorie de subventions est estimé à 4.482 millions € en 2022 et s'inscrit lui en baisse par rapport à 2020 et 2021. Les trois principaux postes sont l'exonération d'accises sur le mazout de chauffage, le taux réduit pour le gaz naturel pour les usages industriels et les remboursements de diesel professionnel.</p>
 
-        <p>Une troisième catégorie reprend les écarts de taux sur la consommation intermédiaire. Nous avons pour cette rubrique combiné différentes sources d'information, dont les tableaux entrées-sorties et les données rassemblées pour l'Inventaire des émissions de gaz à effet de serre. Le montant de ces subventions est ainsi estimé à 787 millions € en 2022. L'agriculture (et activités assimilées) est le poste principal, suivi par la navigation intérieure.</p>
+            <p>Une troisième catégorie reprend les écarts de taux sur la consommation intermédiaire. Nous avons pour cette rubrique combiné différentes sources d'information, dont les tableaux entrées-sorties et les données rassemblées pour l'Inventaire des émissions de gaz à effet de serre. Le montant de ces subventions est ainsi estimé à 787 millions € en 2022. L'agriculture (et activités assimilées) est le poste principal, suivi par la navigation intérieure.</p>
 
-        <p>Les écarts de taux sur les accises peuvent également être catégorisées par produit comme indiqué dans le Graphique 4.</p>
+            <p>Les écarts de taux sur les accises peuvent également être catégorisées par produit comme indiqué dans le Graphique 4.</p>
+        </div>
+        <div data-lang="en">
+            <p>Chart 3 details subsidies related to excise duties in several categories. The first comes from rate differences between products. The corresponding amount is €5,267 million in 2022<sup>7</sup>, down compared to 2021. The decrease observed until 2019 is explained by the increase in diesel excise duties which converged towards those applied to unleaded petrol, which here constitute the reference point<sup>8</sup>. The most important part of subsidies from rate differences between products however comes from the low taxation of natural gas. Since 2020, the amount of the subsidy is mainly influenced by the quantities consumed whether for natural gas or gasoil. These are down sharply in 2020 and 2022 and up sharply in 2021 following the Covid crisis and the recovery that followed and also the outbreak of the conflict in Ukraine.</p>
+
+            <p>Specific rates for the same product are the subject of the second category. These subsidies are listed in the Federal Tax Expenditure Inventory but the amount of the subsidy is not the same as in this report, due to different reference points<sup>9</sup>. The amount for this category of subsidies is estimated at €4,482 million in 2022 and is decreasing compared to 2020 and 2021. The three main items are the excise exemption on heating oil, the reduced rate for natural gas for industrial uses and professional diesel reimbursements.</p>
+
+            <p>A third category includes rate differences on intermediate consumption. For this category, we combined different sources of information, including input-output tables and data collected for the Greenhouse Gas Emissions Inventory. The amount of these subsidies is thus estimated at €787 million in 2022. Agriculture (and related activities) is the main item, followed by inland navigation.</p>
+
+            <p>Excise duty rate differences can also be categorized by product as indicated in Chart 4.</p>
+        </div>
 
         <div class="chart-container">
             <canvas id="graphique4"></canvas>
         </div>
 
-        <p>L'essentiel des subventions porte sur le diesel et sur le gaz naturel.</p>
+        <div data-lang="fr" class="active">
+            <p>L'essentiel des subventions porte sur le diesel et sur le gaz naturel.</p>
 
-        <p>Pour le diesel, une part provient de l'écart de taxation qui subsiste (en unité énergétique) par rapport à l'essence sans plomb. L'essentiel provient toutefois des régimes particuliers dont bénéficient le mazout de chauffage, le diesel professionnel et le secteur de l'agriculture et de la sylviculture. Pour le gaz naturel, la différence provient de l'écart de taux par rapport au point de référence de l'essence sans plomb, et du taux réduit appliqué à ce vecteur d'énergie dans le cadre d'accords de branche.</p>
+            <p>Pour le diesel, une part provient de l'écart de taxation qui subsiste (en unité énergétique) par rapport à l'essence sans plomb. L'essentiel provient toutefois des régimes particuliers dont bénéficient le mazout de chauffage, le diesel professionnel et le secteur de l'agriculture et de la sylviculture. Pour le gaz naturel, la différence provient de l'écart de taux par rapport au point de référence de l'essence sans plomb, et du taux réduit appliqué à ce vecteur d'énergie dans le cadre d'accords de branche.</p>
 
-        <p>L'ensemble des subventions peut être réparti entre les grands secteurs que sont le transport, l'industrie, le bâtiment et le secteur de l'agriculture et activités assimilées. Le Graphique 5 donne le résultat de cette ventilation pour l'année 2022 selon le benchmark 1. Il reprend tant les subventions directes que les subventions indirectes ainsi que les voitures de sociétés reprises comme subvention préjudiciable à l'environnement.</p>
+            <p>L'ensemble des subventions peut être réparti entre les grands secteurs que sont le transport, l'industrie, le bâtiment et le secteur de l'agriculture et activités assimilées. Le Graphique 5 donne le résultat de cette ventilation pour l'année 2022 selon le benchmark 1. Il reprend tant les subventions directes que les subventions indirectes ainsi que les voitures de sociétés reprises comme subvention préjudiciable à l'environnement.</p>
+        </div>
+        <div data-lang="en">
+            <p>Most of the subsidies concern diesel and natural gas.</p>
+
+            <p>For diesel, a part comes from the taxation difference that remains (in energy units) compared to unleaded petrol. Most, however, comes from the specific regimes from which heating oil, professional diesel and the agriculture and forestry sector benefit. For natural gas, the difference comes from the rate difference compared to the unleaded petrol reference point, and from the reduced rate applied to this energy vector within the framework of branch agreements.</p>
+
+            <p>All subsidies can be distributed among the major sectors of transport, industry, buildings and the agriculture and related activities sector. Chart 5 gives the result of this breakdown for the year 2022 according to benchmark 1. It includes both direct and indirect subsidies as well as company cars included as an environmentally harmful subsidy.</p>
+        </div>
 
         <div class="chart-container">
             <canvas id="graphique5"></canvas>
         </div>
 
-        <p>Le secteur du transport bénéficie de 2.097 millions € de subventions directes, soit 17,4% du total de celles-ci. Les subventions au transport aérien et maritime international s'élèvent à 976 millions €. Les subventions indirectes dont bénéficie ce secteur s'élèvent à 180 millions € et les subventions préjudiciables à l'environnement (EHS) à 3.434 millions. Les autres secteurs ne bénéficient que de subventions directes, l'industrie pour 3.926 millions € (32,5% des subventions directes), les bâtiments pour 4.913 millions € (40,7%) et les activités agricoles et assimilées pour 1.136 millions € (9,4%). Ces montants et ratios doivent être mis en rapport avec l'importance relative des différents secteurs ou activités concernées. Il faut ainsi se rappeler que l'agriculture ne représente, en 2022, que 0,7 % de la valeur ajoutée produite par l'ensemble de l'économie.</p>
+        <div data-lang="fr" class="active">
+            <p>Le secteur du transport bénéficie de 2.097 millions € de subventions directes, soit 17,4% du total de celles-ci. Les subventions au transport aérien et maritime international s'élèvent à 976 millions €. Les subventions indirectes dont bénéficie ce secteur s'élèvent à 180 millions € et les subventions préjudiciables à l'environnement (EHS) à 3.434 millions. Les autres secteurs ne bénéficient que de subventions directes, l'industrie pour 3.926 millions € (32,5% des subventions directes), les bâtiments pour 4.913 millions € (40,7%) et les activités agricoles et assimilées pour 1.136 millions € (9,4%). Ces montants et ratios doivent être mis en rapport avec l'importance relative des différents secteurs ou activités concernées. Il faut ainsi se rappeler que l'agriculture ne représente, en 2022, que 0,7 % de la valeur ajoutée produite par l'ensemble de l'économie.</p>
 
-        <p>Le Tableau 4 donne le détail des principaux postes, pour chacun de ces secteurs, pour l'année 2022, selon le Benchmark 1.</p>
+            <p>Le Tableau 4 donne le détail des principaux postes, pour chacun de ces secteurs, pour l'année 2022, selon le Benchmark 1.</p>
 
-        <h3>Tableau 4 : Détail des principaux postes de subventions, par secteur (2022) - Benchmark 1</h3>
+            <h3>Tableau 4 : Détail des principaux postes de subventions, par secteur (2022) - Benchmark 1</h3>
+        </div>
+        <div data-lang="en">
+            <p>The transport sector benefits from €2,097 million in direct subsidies, or 17.4% of the total. Subsidies for international air and maritime transport amount to €976 million. Indirect subsidies for this sector amount to €180 million and environmentally harmful subsidies (EHS) to €3,434 million. The other sectors only benefit from direct subsidies: industry for €3,926 million (32.5% of direct subsidies), buildings for €4,913 million (40.7%) and agricultural and related activities for €1,136 million (9.4%). These amounts and ratios must be related to the relative importance of the different sectors or activities concerned. It should be remembered that agriculture only represents, in 2022, 0.7% of the value added produced by the entire economy.</p>
+
+            <p>Table 4 gives the detail of the main subsidy items, by sector, for the year 2022, according to Benchmark 1.</p>
+
+            <h3>Table 4: Detail of main subsidy items, by sector (2022) - Benchmark 1</h3>
+        </div>
         <table>
             <thead>
-                <tr>
+                <tr data-lang="fr" class="active">
                     <th>Secteur / Poste</th>
                     <th>millions €</th>
                     <th>% sous-total</th>
                 </tr>
+                <tr data-lang="en">
+                    <th>Sector / Item</th>
+                    <th>million €</th>
+                    <th>% sub-total</th>
+                </tr>
             </thead>
             <tbody>
-                <tr class="subheader"><td colspan="3">Transport</td></tr>
-                <tr><td>Cartes carburant</td><td>793,9</td><td>37,9%</td></tr>
-                <tr><td>Ecart de taux de base entre produits</td><td>401,4</td><td>19,1%</td></tr>
-                <tr><td>Remboursements de diesel professionnel</td><td>742,4</td><td>35,4%</td></tr>
-                <tr><td>Exonération navigation intérieure</td><td>90,7</td><td>4,3%</td></tr>
-                <tr><td>Exonération dragage</td><td>51,6</td><td>2,5%</td></tr>
-                <tr><td>Autres</td><td>17,0</td><td>0,8%</td></tr>
-                <tr class="total-row"><td>Sous-total subventions directes</td><td>2.097,0</td><td>100,0%</td></tr>
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Transport</span><span data-lang="en">Transport</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Cartes carburant</td><td>793,9</td><td>37,9%</td></tr>
+                <tr data-lang="en"><td>Fuel cards</td><td>793.9</td><td>37.9%</td></tr>
+                <tr data-lang="fr" class="active"><td>Ecart de taux de base entre produits</td><td>401,4</td><td>19,1%</td></tr>
+                <tr data-lang="en"><td>Base rate difference between products</td><td>401.4</td><td>19.1%</td></tr>
+                <tr data-lang="fr" class="active"><td>Remboursements de diesel professionnel</td><td>742,4</td><td>35,4%</td></tr>
+                <tr data-lang="en"><td>Professional diesel reimbursements</td><td>742.4</td><td>35.4%</td></tr>
+                <tr data-lang="fr" class="active"><td>Exonération navigation intérieure</td><td>90,7</td><td>4,3%</td></tr>
+                <tr data-lang="en"><td>Inland navigation exemption</td><td>90.7</td><td>4.3%</td></tr>
+                <tr data-lang="fr" class="active"><td>Exonération dragage</td><td>51,6</td><td>2,5%</td></tr>
+                <tr data-lang="en"><td>Dredging exemption</td><td>51.6</td><td>2.5%</td></tr>
+                <tr data-lang="fr" class="active"><td>Autres</td><td>17,0</td><td>0,8%</td></tr>
+                <tr data-lang="en"><td>Others</td><td>17.0</td><td>0.8%</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Sous-total subventions directes</span><span data-lang="en">Sub-total direct subsidies</span></td><td>2.097,0</td><td>100,0%</td></tr>
                 
-                <tr><td>Exonération accises kérosène aviation</td><td>687,7</td><td>70,5%</td></tr>
-                <tr><td>Exonération accises navigation maritime</td><td>288,0</td><td>29,5%</td></tr>
-                <tr class="total-row"><td>Sous-total subventions au transport aérien et maritime international</td><td>975,7</td><td>100,0%</td></tr>
+                <tr data-lang="fr" class="active"><td>Exonération accises kérosène aviation</td><td>687,7</td><td>70,5%</td></tr>
+                <tr data-lang="en"><td>Aviation kerosene excise exemption</td><td>687.7</td><td>70.5%</td></tr>
+                <tr data-lang="fr" class="active"><td>Exonération accises navigation maritime</td><td>288,0</td><td>29,5%</td></tr>
+                <tr data-lang="en"><td>Maritime navigation excise exemption</td><td>288.0</td><td>29.5%</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Sous-total subventions au transport aérien et maritime international</span><span data-lang="en">Sub-total subsidies for international air and maritime transport</span></td><td>975,7</td><td>100,0%</td></tr>
 
-                <tr><td>TVA-Exonération des billets d'avion</td><td>180,2</td><td>100,0%</td></tr>
-                <tr class="total-row"><td>Sous-total subventions indirectes</td><td>180,2</td><td>100,0%</td></tr>
+                <tr data-lang="fr" class="active"><td>TVA-Exonération des billets d'avion</td><td>180,2</td><td>100,0%</td></tr>
+                <tr data-lang="en"><td>VAT-Exemption on plane tickets</td><td>180.2</td><td>100.0%</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Sous-total subventions indirectes</span><span data-lang="en">Sub-total indirect subsidies</span></td><td>180,2</td><td>100,0%</td></tr>
 
-                <tr><td>Voitures de sociétés</td><td>3.434,2</td><td>100,0%</td></tr>
-                <tr class="total-row"><td>Sous-total subventions préjudiciables à l'environnement (EHS)</td><td>3.434,2</td><td>100,0%</td></tr>
-                <tr class="total-row" style="font-size: 1.05rem;"><td>Total Transport</td><td>6.687,0</td><td></td></tr>
+                <tr data-lang="fr" class="active"><td>Voitures de sociétés</td><td>3.434,2</td><td>100,0%</td></tr>
+                <tr data-lang="en"><td>Company cars</td><td>3,434.2</td><td>100.0%</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Sous-total subventions préjudiciables à l'environnement (EHS)</span><span data-lang="en">Sub-total environmentally harmful subsidies (EHS)</span></td><td>3.434,2</td><td>100,0%</td></tr>
+                <tr class="total-row" style="font-size: 1.05rem;"><td><span data-lang="fr" class="active">Total Transport</span><span data-lang="en">Total Transport</span></td><td>6.687,0</td><td></td></tr>
 
-                <tr class="subheader"><td colspan="3">Industrie</td></tr>
-                <tr><td>Ecart de taux de base entre produits</td><td>2.052,5</td><td>52,3%</td></tr>
-                <tr><td>Taux réduit gasoil</td><td>412,5</td><td>10,5%</td></tr>
-                <tr><td>Taux réduit gaz naturel</td><td>1.295,2</td><td>33,0%</td></tr>
-                <tr><td>Autres</td><td>166,2</td><td>4,2%</td></tr>
-                <tr class="total-row" style="font-size: 1.05rem;"><td>Total Industrie</td><td>3.926,4</td><td>100,0%</td></tr>
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Industrie</span><span data-lang="en">Industry</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Ecart de taux de base entre produits</td><td>2.052,5</td><td>52,3%</td></tr>
+                <tr data-lang="en"><td>Base rate difference between products</td><td>2,052.5</td><td>52.3%</td></tr>
+                <tr data-lang="fr" class="active"><td>Taux réduit gasoil</td><td>412,5</td><td>10,5%</td></tr>
+                <tr data-lang="en"><td>Reduced rate gasoil</td><td>412.5</td><td>10.5%</td></tr>
+                <tr data-lang="fr" class="active"><td>Taux réduit gaz naturel</td><td>1.295,2</td><td>33,0%</td></tr>
+                <tr data-lang="en"><td>Reduced rate natural gas</td><td>1,295.2</td><td>33.0%</td></tr>
+                <tr data-lang="fr" class="active"><td>Autres</td><td>166,2</td><td>4,2%</td></tr>
+                <tr data-lang="en"><td>Others</td><td>166.2</td><td>4.2%</td></tr>
+                <tr class="total-row" style="font-size: 1.05rem;"><td><span data-lang="fr" class="active">Total Industrie</span><span data-lang="en">Total Industry</span></td><td>3.926,4</td><td>100,0%</td></tr>
 
-                <tr class="subheader"><td colspan="3">Bâtiments</td></tr>
-                <tr><td>Transferts aux particuliers (tarifs sociaux e.a) (*)</td><td>756,8</td><td>15,4%</td></tr>
-                <tr><td>Ecart de taux de base entre produits</td><td>2.524,6</td><td>51,4%</td></tr>
-                <tr><td>Exonération mazout de chauffage</td><td>1.609,8</td><td>32,8%</td></tr>
-                <tr><td>Autres</td><td>21,7</td><td>0,4%</td></tr>
-                <tr class="total-row" style="font-size: 1.05rem;"><td>Total Bâtiments</td><td>4.912,9</td><td>100,0%</td></tr>
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Bâtiments</span><span data-lang="en">Buildings</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Transferts aux particuliers (tarifs sociaux e.a) (*)</td><td>756,8</td><td>15,4%</td></tr>
+                <tr data-lang="en"><td>Transfers to individuals (social tariffs etc.) (*)</td><td>756.8</td><td>15.4%</td></tr>
+                <tr data-lang="fr" class="active"><td>Ecart de taux de base entre produits</td><td>2.524,6</td><td>51,4%</td></tr>
+                <tr data-lang="en"><td>Base rate difference between products</td><td>2,524.6</td><td>51.4%</td></tr>
+                <tr data-lang="fr" class="active"><td>Exonération mazout de chauffage</td><td>1.609,8</td><td>32,8%</td></tr>
+                <tr data-lang="en"><td>Heating oil exemption</td><td>1,609.8</td><td>32.8%</td></tr>
+                <tr data-lang="fr" class="active"><td>Autres</td><td>21,7</td><td>0,4%</td></tr>
+                <tr data-lang="en"><td>Others</td><td>21.7</td><td>0.4%</td></tr>
+                <tr class="total-row" style="font-size: 1.05rem;"><td><span data-lang="fr" class="active">Total Bâtiments</span><span data-lang="en">Total Buildings</span></td><td>4.912,9</td><td>100,0%</td></tr>
                 
-                <tr><td>Tarif social élargi - gaz naturel (BIM)</td><td>717,2</td><td>61,0%</td></tr>
-                <tr><td>Tarif social élargi - électricité (BIM) (*)</td><td>458,7</td><td>39,0%</td></tr>
-                <tr class="total-row"><td>Total Bâtiments - mesures temporaires</td><td>1.175,9</td><td>100,0%</td></tr>
+                <tr data-lang="fr" class="active"><td>Tarif social élargi - gaz naturel (BIM)</td><td>717,2</td><td>61,0%</td></tr>
+                <tr data-lang="en"><td>Extended social tariff - natural gas (BIM)</td><td>717.2</td><td>61.0%</td></tr>
+                <tr data-lang="fr" class="active"><td>Tarif social élargi - électricité (BIM) (*)</td><td>458,7</td><td>39,0%</td></tr>
+                <tr data-lang="en"><td>Extended social tariff - electricity (BIM) (*)</td><td>458.7</td><td>39.0%</td></tr>
+                <tr class="total-row"><td><span data-lang="fr" class="active">Total Bâtiments - mesures temporaires</span><span data-lang="en">Total Buildings - temporary measures</span></td><td>1.175,9</td><td>100,0%</td></tr>
 
-                <tr class="subheader"><td colspan="3">Agriculture et autres activités</td></tr>
-                <tr><td>Ecart de taux de base entre produits</td><td>268,0</td><td>23,6%</td></tr>
-                <tr><td>Exonération pour tracteurs agricoles, horticoles et forestiers</td><td>247,0</td><td>21,8%</td></tr>
-                <tr><td>Exonérations sur consommation intermédiaire</td><td>620,5</td><td>54,6%</td></tr>
-                <tr class="total-row" style="font-size: 1.05rem;"><td>Total Agriculture et autres activités</td><td>1.135,5</td><td>100,0%</td></tr>
+                <tr class="subheader"><td colspan="3"><span data-lang="fr" class="active">Agriculture et autres activités</span><span data-lang="en">Agriculture and other activities</span></td></tr>
+                <tr data-lang="fr" class="active"><td>Ecart de taux de base entre produits</td><td>268,0</td><td>23,6%</td></tr>
+                <tr data-lang="en"><td>Base rate difference between products</td><td>268.0</td><td>23.6%</td></tr>
+                <tr data-lang="fr" class="active"><td>Exonération pour tracteurs agricoles, horticoles et forestiers</td><td>247,0</td><td>21,8%</td></tr>
+                <tr data-lang="en"><td>Exemption for agricultural, horticultural and forestry tractors</td><td>247.0</td><td>21.8%</td></tr>
+                <tr data-lang="fr" class="active"><td>Exonérations sur consommation intermédiaire</td><td>620,5</td><td>54,6%</td></tr>
+                <tr data-lang="en"><td>Exemptions on intermediate consumption</td><td>620.5</td><td>54.6%</td></tr>
+                <tr class="total-row" style="font-size: 1.05rem;"><td><span data-lang="fr" class="active">Total Agriculture et autres activités</span><span data-lang="en">Total Agriculture and other activities</span></td><td>1.135,5</td><td>100,0%</td></tr>
 
-                <tr class="total-row" style="background-color: var(--primary-color); color: #fff;"><td>Total des subventions directes**</td><td>13.247,7</td><td></td></tr>
+                <tr class="total-row" style="background-color: var(--primary-color); color: #fff;"><td><span data-lang="fr" class="active">Total des subventions directes**</span><span data-lang="en">Total direct subsidies**</span></td><td>13.247,7</td><td></td></tr>
             </tbody>
         </table>
-        <p style="font-size: 0.85rem; color: var(--text-muted);"><em>** 0,1% des subventions directes n'ont pas pu être attribuées à un secteur spécifique, il y a donc une différence entre le total du tableau par secteur et le total des subventions directes.</em></p>
+        <div data-lang="fr" class="active">
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>** 0,1% des subventions directes n'ont pas pu être attribuées à un secteur spécifique, il y a donc une différence entre le total du tableau par secteur et le total des subventions directes.</em></p>
 
-        <p>Dans le secteur du transport, les deux postes les plus importants des subventions directes sont les cartes carburants des voitures de sociétés et le remboursement du diesel professionnel avec respectivement 37,9% et 35,4% du total des subventions directes dont ce secteur bénéficie. Vient ensuite l'exonération d'accises sur le kérosène dont bénéficie l'aviation. Les exonérations sectorielles ne forment qu'une faible part du total des subventions mais peuvent être relativement importantes par rapport à l'activité de ces secteurs. L'impact des écarts de taux entre produits est ici relativement limité vu le faible écart de taxation entre essence et diesel qui sont les deux principaux carburants concernés.</p>
+            <p>Dans le secteur du transport, les deux postes les plus importants des subventions directes sont les cartes carburants des voitures de sociétés et le remboursement du diesel professionnel avec respectivement 37,9% et 35,4% du total des subventions directes dont ce secteur bénéficie. Vient ensuite l'exonération d'accises sur le kérosène dont bénéficie l'aviation. Les exonérations sectorielles ne forment qu'une faible part du total des subventions mais peuvent être relativement importantes par rapport à l'activité de ces secteurs. L'impact des écarts de taux entre produits est ici relativement limité vu le faible écart de taxation entre essence et diesel qui sont les deux principaux carburants concernés.</p>
 
-        <p>Dans l'industrie, plus de la moitié (56%) des subventions directes proviennent des écarts de taux entre produits et plus particulièrement de la faible taxation du gaz naturel. Le taux réduit appliqué à celui-ci pour certaines entreprises forme le deuxième poste en importance.</p>
+            <p>Dans l'industrie, plus de la moitié (56%) des subventions directes proviennent des écarts de taux entre produits et plus particulièrement de la faible taxation du gaz naturel. Le taux réduit appliqué à celui-ci pour certaines entreprises forme le deuxième poste en importance.</p>
 
-        <p>Dans le secteur des bâtiments, les deux postes principaux sont les subventions provenant des écarts de taux entre produits et l'exonération du mazout de chauffage. Le premier concerne essentiellement le gaz naturel. L'année 2022 se caractérise également par une forte augmentation des transferts aux particuliers constitués principalement par les tarifs sociaux sur le gaz et l'électricité.</p>
+            <p>Dans le secteur des bâtiments, les deux postes principaux sont les subventions provenant des écarts de taux entre produits et l'exonération du mazout de chauffage. Le premier concerne essentiellement le gaz naturel. L'année 2022 se caractérise également par une forte augmentation des transferts aux particuliers constitués principalement par les tarifs sociaux sur le gaz et l'électricité.</p>
 
-        <p>Enfin, deux postes sont à mentionner pour les activités agricoles et assimilées. La sous-taxation du gaz naturel (écarts de taux entre produits) représente 23,6% du total et les régimes sectoriels 76,4%.</p>
+            <p>Enfin, deux postes sont à mentionner pour les activités agricoles et assimilées. La sous-taxation du gaz naturel (écarts de taux entre produits) représente 23,6% du total et les régimes sectoriels 76,4%.</p>
+        </div>
+        <div data-lang="en">
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>** 0.1% of direct subsidies could not be attributed to a specific sector, so there is a difference between the total of the table by sector and the total of direct subsidies.</em></p>
+
+            <p>In the transport sector, the two most important items of direct subsidies are fuel cards for company cars and professional diesel reimbursement with 37.9% and 35.4% respectively of the total direct subsidies from which this sector benefits. Next comes the excise exemption on kerosene from which aviation benefits. Sectoral exemptions form only a small part of total subsidies but can be relatively important compared to the activity of these sectors. The impact of rate differences between products is relatively limited here given the low taxation difference between petrol and diesel, which are the two main motor fuels concerned.</p>
+
+            <p>In industry, more than half (56%) of direct subsidies come from rate differences between products and more particularly from the low taxation of natural gas. The reduced rate applied to it for certain companies forms the second most important item.</p>
+
+            <p>In the building sector, the two main items are subsidies from rate differences between products and the heating oil exemption. The first mainly concerns natural gas. The year 2022 is also characterized by a sharp increase in transfers to individuals consisting mainly of social tariffs on gas and electricity.</p>
+
+            <p>Finally, two items should be mentioned for agricultural and related activities. The under-taxation of natural gas (rate differences between products) represents 23.6% of the total and sectoral regimes 76.4%.</p>
+        </div>
 
         <hr>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">
-        <em><sup>6</sup> En prenant en compte, pour les subsides relatifs à l'électricité, la proportion d'énergies fossiles dans le mix énergétique.</em><br>
-        <em><sup>7</sup> Le montant de la subvention est calculé sur base des volumes soumis au taux d'accises de référence pour un produit donné. Lorsqu'il y a un régime particulier, les volumes concernés sont repris dans la deuxième rubrique. Il n'y a donc pas de double comptage.</em><br>
-        <em><sup>8</sup> A noter toutefois que l'égalisation n'est pas réalisée en unité énergétique (Tep) mais bien en volume, ce qui laisse subsister un montant de subvention au diesel en fin de période.</em><br>
-        <em><sup>9</sup> L'inventaire fédéral des dépenses fiscales quantifie ces subventions en prenant pour chaque produit le taux normal comme référence. Dans ce rapport, les subventions sont quantifiées ici par rapport au taux de référence unique exprimé en Tep.</em></p>
+        <div data-lang="fr" class="active">
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+            <em><sup>6</sup> En prenant en compte, pour les subsides relatifs à l'électricité, la proportion d'énergies fossiles dans le mix énergétique.</em><br>
+            <em><sup>7</sup> Le montant de la subvention est calculé sur base des volumes soumis au taux d'accises de référence pour un produit donné. Lorsqu'il y a un régime particulier, les volumes concernés sont repris dans la deuxième rubrique. Il n'y a donc pas de double comptage.</em><br>
+            <em><sup>8</sup> A noter toutefois que l'égalisation n'est pas réalisée en unité énergétique (Tep) mais bien en volume, ce qui laisse subsister un montant de subvention au diesel en fin de période.</em><br>
+            <em><sup>9</sup> L'inventaire fédéral des dépenses fiscales quantifie ces subventions en prenant pour chaque produit le taux normal comme référence. Dans ce rapport, les subventions sont quantifiées ici par rapport au taux de référence unique exprimé en Tep.</em></p>
+        </div>
+        <div data-lang="en">
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+            <em><sup>6</sup> Taking into account, for electricity-related subsidies, the proportion of fossil energies in the energy mix.</em><br>
+            <em><sup>7</sup> The amount of the subsidy is calculated on the basis of volumes subject to the reference excise rate for a given product. When there is a specific regime, the volumes concerned are included in the second category. There is therefore no double counting.</em><br>
+            <em><sup>8</sup> Note however that equalization is not carried out in energy units (toe) but in volume, which leaves a diesel subsidy amount at the end of the period.</em><br>
+            <em><sup>9</sup> The federal tax expenditure inventory quantifies these subsidies by taking for each product the normal rate as a reference. In this report, subsidies are quantified here in relation to the single reference rate expressed in toe.</em></p>
+        </div>
     </section>
 
     <section id="conclusions">
-        <h2>Conclusions</h2>
-        <p>Pour le recensement des subventions opéré dans ce rapport, le critère d'identification est le fait de subventionner, directement ou indirectement, le recours aux énergies fossiles.</p>
+        <div data-lang="fr" class="active">
+            <h2>Conclusions</h2>
+            <p>Pour le recensement des subventions opéré dans ce rapport, le critère d'identification est le fait de subventionner, directement ou indirectement, le recours aux énergies fossiles.</p>
 
-        <p>Certains constats posés lors des éditions précédentes de l'inventaire fédéral des subsides aux énergies fossiles restent d'actualité. Il en est ainsi, d'une part, du problème de transparence. La plus grande part des subventions sont en effet octroyées par la voie fiscale. Or, les écarts de taux ne sont pas directement identifiables, à l'inverse des dépenses budgétaires, car les recettes fiscales sont exprimées nettes des pertes en recettes provenant des dépenses fiscales. D'autre part, une part substantielle des subventions octroyées par la voie fiscale n'est pas quantifiée dans l'Inventaire fédéral des dépenses fiscales.</p>
+            <p>Certains constats posés lors des éditions précédentes de l'inventaire fédéral des subsides aux énergies fossiles restent d'actualité. Il en est ainsi, d'une part, du problème de transparence. La plus grande part des subventions sont en effet octroyées par la voie fiscale. Or, les écarts de taux ne sont pas directement identifiables, à l'inverse des dépenses budgétaires, car les recettes fiscales sont exprimées nettes des pertes en recettes provenant des dépenses fiscales. D'autre part, une part substantielle des subventions octroyées par la voie fiscale n'est pas quantifiée dans l'Inventaire fédéral des dépenses fiscales.</p>
 
-        <p>La contribution fédérale à la mise à jour du Plan national Energie Climat, dont la remise à la Commission européenne était prévue pour le 30 mai 2024 réaffirme la nécessité et l'urgence du phasing out des subsides aux énergies fossiles, sous la forme d'une trajectoire claire de disparition progressive de ces subsides.<sup>10</sup></p>
+            <p>La contribution fédérale à la mise à jour du Plan national Energie Climat, dont la remise à la Commission européenne était prévue pour le 30 mai 2024 réaffirme la nécessité et l'urgence du phasing out des subsides aux énergies fossiles, sous la forme d'une trajectoire claire de disparition progressive de ces subsides.<sup>10</sup></p>
 
-        <p>Lors des discussions portant sur le phasing out de ces subventions, il y aura lieu de tenir compte des objectifs particuliers de certaines subventions, notamment des objectifs sociaux. Leur réforme doit concilier la suppression des effets dommageables à l'environnement avec l'atteinte par d'autres moyens, non néfastes à l'environnement, des objectifs particuliers identifiés. Les aspects de transition juste sont en effet indissociables des discussions portant sur les pistes de réforme.</p>
+            <p>Lors des discussions portant sur le phasing out de ces subventions, il y aura lieu de tenir compte des objectifs particuliers de certaines subventions, notamment des objectifs sociaux. Leur réforme doit concilier la suppression des effets dommageables à l'environnement avec l'atteinte par d'autres moyens, non néfastes à l'environnement, des objectifs particuliers identifiés. Les aspects de transition juste sont en effet indissociables des discussions portant sur les pistes de réforme.</p>
 
-        <hr>
-        <p style="font-size: 0.85rem; color: var(--text-muted);"><em><sup>10</sup> Plan fédéral Energie-Climat, 2024, https://climat.be/doc/pfec-2024-mise-a-jour-definitive.pdf</em></p>
+            <hr>
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em><sup>10</sup> Plan fédéral Energie-Climat, 2024, https://climat.be/doc/pfec-2024-mise-a-jour-definitive.pdf</em></p>
+        </div>
+        <div data-lang="en">
+            <h2>Conclusions</h2>
+            <p>For the identification of subsidies carried out in this report, the identification criterion is the fact of subsidizing, directly or indirectly, the use of fossil energies.</p>
+
+            <p>Certain findings made during previous editions of the federal fossil fuel subsidy inventory remain relevant. This is true, on the one hand, for the transparency problem. Most subsidies are indeed granted through tax channels. However, rate differences are not directly identifiable, unlike budgetary expenditures, because tax revenues are expressed net of revenue losses from tax expenditures. On the other hand, a substantial part of the subsidies granted through tax channels is not quantified in the Federal Tax Expenditure Inventory.</p>
+
+            <p>The federal contribution to the update of the National Energy and Climate Plan, whose submission to the European Commission was scheduled for May 30, 2024, reaffirms the necessity and urgency of phasing out fossil fuel subsidies, in the form of a clear trajectory for the gradual disappearance of these subsidies.<sup>10</sup></p>
+
+            <p>During discussions regarding the phasing out of these subsidies, account will have to be taken of the specific objectives of certain subsidies, notably social objectives. Their reform must reconcile the removal of damaging effects on the environment with the achievement of the identified specific objectives by other means that are not harmful to the environment. Aspects of a just transition are indeed inseparable from discussions regarding reform options.</p>
+
+            <hr>
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em><sup>10</sup> Federal Energy-Climate Plan, 2024, https://climat.be/doc/pfec-2024-mise-a-jour-definitive.pdf</em></p>
+        </div>
     </section>
 
     <script>
+        let currentLang = 'fr';
+        const charts = {};
+
+        const translations = {
+            fr: {
+                chart1Title: "Graphique 1 : Taux d'accises (en € par tonne équivalent pétrole, 2023)",
+                chart1Y: "€ par tep",
+                chart1Labels: [
+                    'Essence sans plomb (Bench. 1)', 'Diesel haute teneur en soufre', 'Diesel basse teneur en soufre',
+                    'Diesel professionnel', 'Electricité 1ère tranche (Bench. 2 NP)', 'Mazout chauffage haute teneur',
+                    'Mazout chauffage basse teneur', 'Gaz naturel (Non-prof)', 'Electricité 1ère tranche (Bench. 2 Prof)',
+                    'Gasoil util. ind. et com.', 'Kérosène', 'Fioul lourd', 'GPL', 'Houille et coke', 'Lignite',
+                    'Gaz naturel (Prof)', 'Gaz naturel accord de branche'
+                ],
+                chart1Dataset: "Taux d'accises (€ / tep)",
+                chart2Title: "Graphique 2 : Subventions directes aux énergies fossiles, par instrument (en millions €)",
+                chart2Y: "Millions €",
+                chart2Labels: ['2018', '2019', '2020', '2021', '2022'],
+                chart2DatasetLabels: [
+                    'Transferts - mesures permanentes', 'Transferts - mesures temporaires',
+                    'Impôts sur le revenu', 'TVA', 'Accises'
+                ],
+                chart3Title: "Graphique 3 : Subventions aux énergies fossiles, accises, par catégories (en millions €)",
+                chart3Y: "Millions €",
+                chart3DatasetLabels: [
+                    'Ecarts de taux entre produits', 'Taux particuliers pour un même produit',
+                    'Subventions sur consommation intermédiaire'
+                ],
+                chart4Title: "Graphique 4 : Subventions aux énergies fossiles, accises, par produit (en millions €)",
+                chart4Y: "Millions €",
+                chart4DatasetLabels: [
+                    'Essence', 'Gasoil', 'Kérosène', 'Fioul lourd', 'LPG', 'Gaz naturel', 'Houille et coke'
+                ],
+                chart5Title: "Graphique 5 : Répartition des subventions directes, par secteur (2022, en millions €)",
+                chart5Labels: [
+                    'Transport (direct)', 'Transport (indirect)', 'Transport (EHS)', 'Industrie',
+                    'Bâtiments (mesures permanentes)', 'Bâtiments (mesures temporaires)',
+                    'Agriculture et autres activités', 'Transport aérien et maritime international'
+                ],
+                exportBtn: "Exporter XLS"
+            },
+            en: {
+                chart1Title: "Chart 1: Excise duty rates (in € per tonne of oil equivalent, 2023)",
+                chart1Y: "€ per toe",
+                chart1Labels: [
+                    'Unleaded petrol (Bench. 1)', 'High sulfur diesel', 'Low sulfur diesel',
+                    'Professional diesel', 'Electricity 1st tier (Bench. 2 NP)', 'High sulfur heating oil',
+                    'Low sulfur heating oil', 'Natural gas (Non-prof)', 'Electricity 1st tier (Bench. 2 Prof)',
+                    'Gasoil ind. and com. uses', 'Kerosene', 'Heavy fuel oil', 'LPG', 'Coal and coke', 'Lignite',
+                    'Natural gas (Prof)', 'Natural gas branch agreement'
+                ],
+                chart1Dataset: "Excise rate (€ / toe)",
+                chart2Title: "Chart 2: Direct fossil fuel subsidies, by instrument (in million €)",
+                chart2Y: "Million €",
+                chart2Labels: ['2018', '2019', '2020', '2021', '2022'],
+                chart2DatasetLabels: [
+                    'Transfers - permanent measures', 'Transfers - temporary measures',
+                    'Income taxes', 'VAT', 'Excise duties'
+                ],
+                chart3Title: "Chart 3: Fossil fuel subsidies, excise duties, by category (in million €)",
+                chart3Y: "Million €",
+                chart3DatasetLabels: [
+                    'Rate differences between products', 'Specific rates for the same product',
+                    'Subsidies on intermediate consumption'
+                ],
+                chart4Title: "Chart 4: Fossil fuel subsidies, excise duties, by product (in million €)",
+                chart4Y: "Million €",
+                chart4DatasetLabels: [
+                    'Petrol', 'Gasoil', 'Kerosene', 'Heavy fuel oil', 'LPG', 'Natural gas', 'Coal and coke'
+                ],
+                chart5Title: "Chart 5: Distribution of direct subsidies, by sector (2022, in million €)",
+                chart5Labels: [
+                    'Transport (direct)', 'Transport (indirect)', 'Transport (EHS)', 'Industry',
+                    'Buildings (permanent measures)', 'Buildings (temporary measures)',
+                    'Agriculture and other activities', 'International air and maritime transport'
+                ],
+                exportBtn: "Export XLS"
+            }
+        };
+
         const ctx1 = document.getElementById('graphique1').getContext('2d');
-        new Chart(ctx1, {
+        charts.graphique1 = new Chart(ctx1, {
             type: 'bar',
             data: {
-                labels: [
-                    'Essence sans plomb (Bench. 1)',
-                    'Diesel haute teneur en soufre',
-                    'Diesel basse teneur en soufre',
-                    'Diesel professionnel',
-                    'Electricité 1ère tranche (Bench. 2 NP)',
-                    'Mazout chauffage haute teneur',
-                    'Mazout chauffage basse teneur',
-                    'Gaz naturel (Non-prof)',
-                    'Electricité 1ère tranche (Bench. 2 Prof)',
-                    'Gasoil util. ind. et com.',
-                    'Kérosène',
-                    'Fioul lourd',
-                    'GPL',
-                    'Houille et coke',
-                    'Lignite',
-                    'Gaz naturel (Prof)',
-                    'Gaz naturel accord de branche'
-                ],
+                labels: translations.fr.chart1Labels,
                 datasets: [{
-                    label: "Taux d'accises (€ / tep)",
+                    label: translations.fr.chart1Dataset,
                     data: [790, 700, 690, 450, 510, 20, 20, 15, 190, 20, 20, 15, 40, 10, 40, 15, 10],
                     backgroundColor: [
-                        '#dd6b20', // Benchmark 1 (Highlight)
-                        '#2b6cb0', '#2b6cb0', '#2b6cb0', // Carburants
-                        '#319795', // Benchmark 2 NP
-                        '#4a5568', '#4a5568', '#4a5568', // Combustibles NP
-                        '#38b2ac', // Benchmark 2 Prof
-                        '#718096', '#718096', '#718096', '#718096', '#718096', '#718096', '#718096', '#718096' // Combustibles Prof
+                        '#dd6b20', '#2b6cb0', '#2b6cb0', '#2b6cb0', '#319795', '#4a5568', '#4a5568', '#4a5568', '#38b2ac',
+                        '#718096', '#718096', '#718096', '#718096', '#718096', '#718096', '#718096', '#718096'
                     ],
                     borderWidth: 0,
                     borderRadius: 4,
@@ -690,7 +1090,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: "Graphique 1 : Taux d'accises (en € par tonne équivalent pétrole, 2023)",
+                        text: translations.fr.chart1Title,
                         font: { size: 16, family: "'Segoe UI', Roboto, sans-serif", weight: 'bold' },
                         color: '#1a365d'
                     },
@@ -700,7 +1100,7 @@
                     y: {
                         beginAtZero: true,
                         max: 800,
-                        title: { display: true, text: '€ par tep', font: { weight: '600' } },
+                        title: { display: true, text: translations.fr.chart1Y, font: { weight: '600' } },
                         grid: { color: '#edf2f7' }
                     },
                     x: {
@@ -712,41 +1112,16 @@
         });
 
         const ctx2 = document.getElementById('graphique2').getContext('2d');
-        new Chart(ctx2, {
+        charts.graphique2 = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: ['2018', '2019', '2020', '2021', '2022'],
+                labels: translations.fr.chart2Labels,
                 datasets: [
-                    {
-                        label: 'Transferts - mesures permanentes',
-                        data: [156.7, 178.2, 165.6, 173.1, 756.8],
-                        backgroundColor: '#2b6cb0',
-                        maxBarThickness: 45
-                    },
-                    {
-                        label: 'Transferts - mesures temporaires',
-                        data: [0, 0, 0, 215.8, 1175.9],
-                        backgroundColor: '#4299e1',
-                        maxBarThickness: 45
-                    },
-                    {
-                        label: 'Impôts sur le revenu',
-                        data: [472.4, 512.8, 521.9, 618.9, 793.9],
-                        backgroundColor: '#dd6b20',
-                        maxBarThickness: 45
-                    },
-                    {
-                        label: 'TVA',
-                        data: [3.6, 2.9, 2.4, 2.4, 5.1],
-                        backgroundColor: '#a0aec0',
-                        maxBarThickness: 45
-                    },
-                    {
-                        label: 'Accises',
-                        data: [11045.7, 10786.9, 10661.3, 11019.0, 10536.0],
-                        backgroundColor: '#319795',
-                        maxBarThickness: 45
-                    }
+                    { label: translations.fr.chart2DatasetLabels[0], data: [156.7, 178.2, 165.6, 173.1, 756.8], backgroundColor: '#2b6cb0', maxBarThickness: 45 },
+                    { label: translations.fr.chart2DatasetLabels[1], data: [0, 0, 0, 215.8, 1175.9], backgroundColor: '#4299e1', maxBarThickness: 45 },
+                    { label: translations.fr.chart2DatasetLabels[2], data: [472.4, 512.8, 521.9, 618.9, 793.9], backgroundColor: '#dd6b20', maxBarThickness: 45 },
+                    { label: translations.fr.chart2DatasetLabels[3], data: [3.6, 2.9, 2.4, 2.4, 5.1], backgroundColor: '#a0aec0', maxBarThickness: 45 },
+                    { label: translations.fr.chart2DatasetLabels[4], data: [11045.7, 10786.9, 10661.3, 11019.0, 10536.0], backgroundColor: '#319795', maxBarThickness: 45 }
                 ]
             },
             options: {
@@ -755,7 +1130,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: "Graphique 2 : Subventions directes aux énergies fossiles, par instrument (en millions €)",
+                        text: translations.fr.chart2Title,
                         font: { size: 16, family: "'Segoe UI', Roboto, sans-serif", weight: 'bold' },
                         color: '#1a365d'
                     },
@@ -763,35 +1138,20 @@
                 },
                 scales: {
                     x: { stacked: true, grid: { display: false } },
-                    y: { stacked: true, title: { display: true, text: 'Millions €', font: { weight: '600' } }, grid: { color: '#edf2f7' } }
+                    y: { stacked: true, title: { display: true, text: translations.fr.chart2Y, font: { weight: '600' } }, grid: { color: '#edf2f7' } }
                 }
             }
         });
 
         const ctx3 = document.getElementById('graphique3').getContext('2d');
-        new Chart(ctx3, {
+        charts.graphique3 = new Chart(ctx3, {
             type: 'bar',
             data: {
-                labels: ['2018', '2019', '2020', '2021', '2022'],
+                labels: translations.fr.chart2Labels,
                 datasets: [
-                    {
-                        label: 'Ecarts de taux entre produits',
-                        data: [5587.4, 5254.1, 4849.2, 5520.1, 5266.6],
-                        backgroundColor: '#2b6cb0',
-                        maxBarThickness: 45
-                    },
-                    {
-                        label: 'Taux particuliers pour un même produit',
-                        data: [4783.2, 5093.0, 4750.4, 4773.7, 4482.0],
-                        backgroundColor: '#dd6b20',
-                        maxBarThickness: 45
-                    },
-                    {
-                        label: 'Subventions sur consommation intermédiaire',
-                        data: [675.1, 782.4, 719.1, 725.3, 787.4],
-                        backgroundColor: '#718096',
-                        maxBarThickness: 45
-                    }
+                    { label: translations.fr.chart3DatasetLabels[0], data: [5587.4, 5254.1, 4849.2, 5520.1, 5266.6], backgroundColor: '#2b6cb0', maxBarThickness: 45 },
+                    { label: translations.fr.chart3DatasetLabels[1], data: [4783.2, 5093.0, 4750.4, 4773.7, 4482.0], backgroundColor: '#dd6b20', maxBarThickness: 45 },
+                    { label: translations.fr.chart3DatasetLabels[2], data: [675.1, 782.4, 719.1, 725.3, 787.4], backgroundColor: '#718096', maxBarThickness: 45 }
                 ]
             },
             options: {
@@ -800,7 +1160,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: "Graphique 3 : Subventions aux énergies fossiles, accises, par catégories (en millions €)",
+                        text: translations.fr.chart3Title,
                         font: { size: 16, family: "'Segoe UI', Roboto, sans-serif", weight: 'bold' },
                         color: '#1a365d'
                     },
@@ -808,24 +1168,24 @@
                 },
                 scales: {
                     x: { stacked: true, grid: { display: false } },
-                    y: { stacked: true, title: { display: true, text: 'Millions €', font: { weight: '600' } }, grid: { color: '#edf2f7' } }
+                    y: { stacked: true, title: { display: true, text: translations.fr.chart3Y, font: { weight: '600' } }, grid: { color: '#edf2f7' } }
                 }
             }
         });
 
         const ctx4 = document.getElementById('graphique4').getContext('2d');
-        new Chart(ctx4, {
+        charts.graphique4 = new Chart(ctx4, {
             type: 'bar',
             data: {
-                labels: ['2018', '2019', '2020', '2021', '2022'],
+                labels: translations.fr.chart2Labels,
                 datasets: [
-                    { label: 'Essence', data: [0, 0, 0, 0, 0], backgroundColor: '#e53e3e', maxBarThickness: 45 },
-                    { label: 'Gasoil', data: [4016.5, 4047.9, 3986.0, 3745.9, 3394.1], backgroundColor: '#dd6b20', maxBarThickness: 45 },
-                    { label: 'Kérosène', data: [41.6, 38.3, 34.8, 43.9, 38.2], backgroundColor: '#a0aec0', maxBarThickness: 45 },
-                    { label: 'Fioul lourd', data: [26.0, 20.1, 52.8, 16.9, 20.1], backgroundColor: '#cbd5e0', maxBarThickness: 45 },
-                    { label: 'LPG', data: [127.0, 114.0, 144.8, 149.7, 129.5], backgroundColor: '#4299e1', maxBarThickness: 45 },
-                    { label: 'Gaz naturel', data: [6098.3, 5832.5, 5569.1, 6314.9, 6149.4], backgroundColor: '#319795', maxBarThickness: 45 },
-                    { label: 'Houille et coke', data: [61.2, 85.2, 21.1, 22.3, 17.2], backgroundColor: '#2d3748', maxBarThickness: 45 }
+                    { label: translations.fr.chart4DatasetLabels[0], data: [0, 0, 0, 0, 0], backgroundColor: '#e53e3e', maxBarThickness: 45 },
+                    { label: translations.fr.chart4DatasetLabels[1], data: [4016.5, 4047.9, 3986.0, 3745.9, 3394.1], backgroundColor: '#dd6b20', maxBarThickness: 45 },
+                    { label: translations.fr.chart4DatasetLabels[2], data: [41.6, 38.3, 34.8, 43.9, 38.2], backgroundColor: '#a0aec0', maxBarThickness: 45 },
+                    { label: translations.fr.chart4DatasetLabels[3], data: [26.0, 20.1, 52.8, 16.9, 20.1], backgroundColor: '#cbd5e0', maxBarThickness: 45 },
+                    { label: translations.fr.chart4DatasetLabels[4], data: [127.0, 114.0, 144.8, 149.7, 129.5], backgroundColor: '#4299e1', maxBarThickness: 45 },
+                    { label: translations.fr.chart4DatasetLabels[5], data: [6098.3, 5832.5, 5569.1, 6314.9, 6149.4], backgroundColor: '#319795', maxBarThickness: 45 },
+                    { label: translations.fr.chart4DatasetLabels[6], data: [61.2, 85.2, 21.1, 22.3, 17.2], backgroundColor: '#2d3748', maxBarThickness: 45 }
                 ]
             },
             options: {
@@ -834,7 +1194,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: "Graphique 4 : Subventions aux énergies fossiles, accises, par produit (en millions €)",
+                        text: translations.fr.chart4Title,
                         font: { size: 16, family: "'Segoe UI', Roboto, sans-serif", weight: 'bold' },
                         color: '#1a365d'
                     },
@@ -842,37 +1202,19 @@
                 },
                 scales: {
                     x: { stacked: true, grid: { display: false } },
-                    y: { stacked: true, title: { display: true, text: 'Millions €', font: { weight: '600' } }, grid: { color: '#edf2f7' } }
+                    y: { stacked: true, title: { display: true, text: translations.fr.chart4Y, font: { weight: '600' } }, grid: { color: '#edf2f7' } }
                 }
             }
         });
 
         const ctx5 = document.getElementById('graphique5').getContext('2d');
-        new Chart(ctx5, {
+        charts.graphique5 = new Chart(ctx5, {
             type: 'doughnut',
             data: {
-                labels: [
-                    'Transport (direct)', 
-                    'Transport (indirect)', 
-                    'Transport (EHS)', 
-                    'Industrie', 
-                    'Bâtiments (mesures permanentes)', 
-                    'Bâtiments (mesures temporaires)', 
-                    'Agriculture et autres activités', 
-                    'Transport aérien et maritime international'
-                ],
+                labels: translations.fr.chart5Labels,
                 datasets: [{
                     data: [2097, 180, 3434, 3926, 4913, 1176, 1136, 976],
-                    backgroundColor: [
-                        '#2b6cb0', // Transport direct
-                        '#63b3ed', // Transport indirect
-                        '#a0aec0', // Transport EHS
-                        '#dd6b20', // Industrie
-                        '#319795', // Bâtiments perm
-                        '#4fd1c5', // Bâtiments temp
-                        '#4a5568', // Agriculture
-                        '#e2e8f0'  // Transport intl
-                    ],
+                    backgroundColor: ['#2b6cb0', '#63b3ed', '#a0aec0', '#dd6b20', '#319795', '#4fd1c5', '#4a5568', '#e2e8f0'],
                     borderWidth: 2,
                     borderColor: '#ffffff'
                 }]
@@ -884,7 +1226,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: "Graphique 5 : Répartition des subventions directes, par secteur (2022, en millions €)",
+                        text: translations.fr.chart5Title,
                         font: { size: 16, family: "'Segoe UI', Roboto, sans-serif", weight: 'bold' },
                         color: '#1a365d'
                     },
@@ -892,6 +1234,74 @@
                 }
             }
         });
+
+        function switchLang(lang) {
+            currentLang = lang;
+            document.body.className = 'lang-' + lang;
+            
+            // Toggle visibility of DOM elements
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            // Update charts
+            updateCharts(lang);
+            
+            // Update export buttons text
+            document.querySelectorAll('.export-btn').forEach(btn => {
+                btn.innerHTML = translations[lang].exportBtn;
+            });
+        }
+
+        function updateCharts(lang) {
+            const t = translations[lang];
+            
+            // Chart 1
+            charts.graphique1.options.plugins.title.text = t.chart1Title;
+            charts.graphique1.data.labels = t.chart1Labels;
+            charts.graphique1.data.datasets[0].label = t.chart1Dataset;
+            charts.graphique1.options.scales.y.title.text = t.chart1Y;
+            charts.graphique1.update();
+
+            // Chart 2
+            charts.graphique2.options.plugins.title.text = t.chart2Title;
+            charts.graphique2.options.scales.y.title.text = t.chart2Y;
+            charts.graphique2.data.datasets.forEach((ds, i) => {
+                ds.label = t.chart2DatasetLabels[i];
+            });
+            charts.graphique2.update();
+
+            // Chart 3
+            charts.graphique3.options.plugins.title.text = t.chart3Title;
+            charts.graphique3.options.scales.y.title.text = t.chart3Y;
+            charts.graphique3.data.datasets.forEach((ds, i) => {
+                ds.label = t.chart3DatasetLabels[i];
+            });
+            charts.graphique3.update();
+
+            // Chart 4
+            charts.graphique4.options.plugins.title.text = t.chart4Title;
+            charts.graphique4.options.scales.y.title.text = t.chart4Y;
+            charts.graphique4.data.datasets.forEach((ds, i) => {
+                ds.label = t.chart4DatasetLabels[i];
+            });
+            charts.graphique4.update();
+
+            // Chart 5
+            charts.graphique5.options.plugins.title.text = t.chart5Title;
+            charts.graphique5.data.labels = t.chart5Labels;
+            charts.graphique5.update();
+        }
 
         // Wrapper Automatique pour appliquer le CSS et injecter les boutons XLS
         document.addEventListener('DOMContentLoaded', () => {
@@ -905,7 +1315,7 @@
 
                 const btn = document.createElement('button');
                 btn.className = 'export-btn';
-                btn.innerHTML = 'Exporter XLS'; // Flèche ajoutée via CSS ::before
+                btn.innerHTML = translations[currentLang].exportBtn; 
                 btn.onclick = () => exportTableToXLS(table, `SPF_Finances_Tableau_${index + 1}.xls`);
                 wrapper.appendChild(btn);
             });
@@ -914,6 +1324,13 @@
                 // Clone the table to inject inline styles so Excel renders it beautifully
                 const tableClone = table.cloneNode(true);
                 
+                // Keep only active rows/elements for the export
+                tableClone.querySelectorAll('[data-lang]').forEach(el => {
+                    if (!el.classList.contains('active')) {
+                        el.remove();
+                    }
+                });
+
                 // Appliquer styles inline aux entêtes
                 tableClone.querySelectorAll('th').forEach(th => {
                     th.style.backgroundColor = '#1a365d';
