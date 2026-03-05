@@ -21,26 +21,29 @@
             max-width: 1050px;
             margin: 0 auto;
             padding: 2rem;
-            /* Corporate SVG pattern background */
             background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 100% 0%, rgba(43, 108, 176, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 0% 100%, rgba(49, 151, 149, 0.05) 0%, transparent 40%),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232b6cb0' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            background-attachment: fixed;
+        }
+
+        /* Hero Wrapper containing header, toc, and meta-info */
+        .hero-wrapper {
+            background-image: linear-gradient(rgba(26, 54, 93, 0.85), rgba(43, 108, 176, 0.75)), url('https://raw.githubusercontent.com/mdruszcz/inventaris/main/background.png');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            margin: -2rem -2rem 3rem -2rem;
+            padding: 4rem 2rem 2rem 2rem;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
         }
         
         /* Stylized Header mimicking the PDF Cover */
         header {
             position: relative;
             text-align: center;
-            padding: 4rem 2rem;
-            margin: -2rem -2rem 3rem -2rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            border-bottom: 6px solid var(--accent-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            overflow: hidden;
-            border-radius: 0 0 8px 8px;
+            padding-bottom: 3rem;
+            margin: 0;
+            z-index: 1;
         }
         /* Abstract background shapes inside header */
         header::before {
@@ -113,9 +116,11 @@
             padding: 1.5rem 2rem;
             border-radius: 8px;
             border-left: 5px solid var(--accent-color);
-            margin-bottom: 3rem;
+            margin-bottom: 0;
             font-size: 0.95rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1;
         }
         .chart-container {
             position: relative;
@@ -227,9 +232,10 @@
             padding: 1.5rem 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             border: 1px solid var(--border-light);
             position: relative;
+            z-index: 1;
         }
         .toc::before {
             content: '';
@@ -252,37 +258,39 @@
 </head>
 <body>
 
-    <header>
-        <h1>Inventaire fédéral des subventions aux énergies fossiles</h1>
-        <h2>2025 - RÉSUMÉ</h2>
-        <p><strong>Service Public Fédéral FINANCES</strong><br>
-        Santé publique, Sécurité de la Chaîne alimentaire, Environnement<br>
-        CLIMATECHANGE.BE | .be</p>
-    </header>
+    <div class="hero-wrapper">
+        <header>
+            <h1>Inventaire fédéral des subventions aux énergies fossiles</h1>
+            <h2>2025 - RÉSUMÉ</h2>
+            <p><strong>Service Public Fédéral FINANCES</strong><br>
+            Santé publique, Sécurité de la Chaîne alimentaire, Environnement<br>
+            CLIMATECHANGE.BE | .be</p>
+        </header>
 
-    <div class="toc">
-        <h3 style="margin-top: 0;">Table des matières</h3>
-        <ul>
-            <li><a href="#contexte">1. Contexte</a></li>
-            <li><a href="#cadre-conceptuel">2. Le cadre conceptuel</a></li>
-            <li><a href="#principaux-resultats">3. Principaux résultats</a></li>
-        </ul>
-    </div>
+        <div class="toc">
+            <h3 style="margin-top: 0;">Table des matières</h3>
+            <ul>
+                <li><a href="#contexte">1. Contexte</a></li>
+                <li><a href="#cadre-conceptuel">2. Le cadre conceptuel</a></li>
+                <li><a href="#principaux-resultats">3. Principaux résultats</a></li>
+            </ul>
+        </div>
 
-    <div class="meta-info">
-        <p><strong>Auteurs :</strong> Ce rapport est rédigé par et disponible auprès des services publics fédéraux (SPF) suivants :</p>
-        <ul style="margin-bottom: 1.5rem;">
-            <li><strong>SPF Finances :</strong> Expertise et Support stratégiques - Service d'Etudes - Direction Politique fiscale générale, Boulevard du Roi Albert II 33 bte 22, 1030 Bruxelles</li>
-            <li><strong>SPF Santé publique, Sécurité de la Chaîne alimentaire et Environnement :</strong> DG Environnement - Service Changements climatiques, Avenue Galilée 5/2, 1210 Bruxelles</li>
-        </ul>
-        <p><strong>Personnes de contact :</strong><br>
-        Samantha Haulotte: samantha.haulotte@minfin.fed.be<br>
-        Jean-Baptiste Traversa: giovanbattista.traversa@minfin.fed.be<br>
-        Justine Soete: justine.soete@health.fgov.be</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;"><em>Ce rapport a été élaboré sur la base des informations disponibles au 1er janvier 2025. Date de publication: juin 2025. Dépôt légal D/2025/2196/17.</em></p>
-        <p style="font-size: 0.85rem;">Une copie électronique du rapport complet (également en néerlandais) peut être téléchargée sur :<br>
-        <a href="https://finances.belgium.be/fr/statistiques_et_analyses/analyses/inventaire-des-subventions-aux-energies-fossiles" style="color: var(--secondary-color);">SPF Finances Analyses</a> | 
-        <a href="https://climat.be/2050-fr/analyses-complementaires" style="color: var(--secondary-color);">Climat.be</a></p>
+        <div class="meta-info">
+            <p><strong>Auteurs :</strong> Ce rapport est rédigé par et disponible auprès des services publics fédéraux (SPF) suivants :</p>
+            <ul style="margin-bottom: 1.5rem;">
+                <li><strong>SPF Finances :</strong> Expertise et Support stratégiques - Service d'Etudes - Direction Politique fiscale générale, Boulevard du Roi Albert II 33 bte 22, 1030 Bruxelles</li>
+                <li><strong>SPF Santé publique, Sécurité de la Chaîne alimentaire et Environnement :</strong> DG Environnement - Service Changements climatiques, Avenue Galilée 5/2, 1210 Bruxelles</li>
+            </ul>
+            <p><strong>Personnes de contact :</strong><br>
+            Samantha Haulotte: samantha.haulotte@minfin.fed.be<br>
+            Jean-Baptiste Traversa: giovanbattista.traversa@minfin.fed.be<br>
+            Justine Soete: justine.soete@health.fgov.be</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;"><em>Ce rapport a été élaboré sur la base des informations disponibles au 1er janvier 2025. Date de publication: juin 2025. Dépôt légal D/2025/2196/17.</em></p>
+            <p style="font-size: 0.85rem; margin-bottom: 0;">Une copie électronique du rapport complet (également en néerlandais) peut être téléchargée sur :<br>
+            <a href="https://finances.belgium.be/fr/statistiques_et_analyses/analyses/inventaire-des-subventions-aux-energies-fossiles" style="color: var(--secondary-color);">SPF Finances Analyses</a> | 
+            <a href="https://climat.be/2050-fr/analyses-complementaires" style="color: var(--secondary-color);">Climat.be</a></p>
+        </div>
     </div>
 
     <section id="contexte">
