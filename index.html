@@ -21,26 +21,84 @@
             max-width: 1050px;
             margin: 0 auto;
             padding: 2rem;
+            /* Corporate SVG pattern background */
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(43, 108, 176, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 0% 100%, rgba(49, 151, 149, 0.05) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232b6cb0' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
         }
+        
+        /* Stylized Header mimicking the PDF Cover */
         header {
+            position: relative;
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 3px solid var(--primary-color);
+            padding: 4rem 2rem;
+            margin: -2rem -2rem 3rem -2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-bottom: 6px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border-radius: 0 0 8px 8px;
         }
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
+        /* Abstract background shapes inside header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(49,151,149,0.2) 0%, rgba(49,151,149,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        header h1 {
+            color: #ffffff;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
         }
+        header h2 {
+            color: #e2e8f0;
+            border: none;
+            margin-top: 0;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        header p {
+            color: #cbd5e0;
+            margin-top: 2rem;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 1;
+        }
+        header strong {
+            color: #ffffff;
+        }
+
         h2 {
             color: var(--secondary-color);
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 2px solid var(--border-light);
             padding-bottom: 0.5rem;
             margin-top: 3rem;
-            font-weight: 600;
+            font-weight: 700;
         }
         h3 {
             color: var(--secondary-color);
@@ -57,7 +115,7 @@
             border-left: 5px solid var(--accent-color);
             margin-bottom: 3rem;
             font-size: 0.95rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .chart-container {
             position: relative;
@@ -67,17 +125,18 @@
             background: #fff;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-light);
         }
         
-        /* STYLES DE TABLEAUX ÉLÉGANTS (Style "Booktabs" institutionnel) */
         .table-wrapper {
             background: #fff;
             border-radius: 8px;
             padding: 25px 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
             margin: 3.5rem 0;
             position: relative;
+            border: 1px solid var(--border-light);
         }
         table {
             width: 100%;
@@ -123,7 +182,6 @@
             padding-top: 24px;
             border-bottom: 1px solid #cbd5e0;
         }
-        /* Lignes de totaux en évidence */
         .total-row td {
             font-weight: 700;
             color: var(--primary-color);
@@ -135,7 +193,6 @@
             border-bottom: 2px solid var(--primary-color) !important;
         }
 
-        /* Bouton d'export modernisé */
         .export-btn {
             position: absolute;
             top: -18px;
@@ -169,13 +226,25 @@
             background: #fff;
             padding: 1.5rem 2rem;
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             margin-bottom: 3rem;
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+        .toc::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 8px 0 0 8px;
         }
         .toc ul { list-style-type: none; padding-left: 0; margin: 0; }
         .toc li { margin-bottom: 0.5rem; }
         .toc a { text-decoration: none; color: var(--secondary-color); font-weight: 600; transition: color 0.2s; }
-        .toc a:hover { color: var(--accent-color); }
+        .toc a:hover { color: var(--accent-color); padding-left: 5px; }
         sup { font-size: 0.75em; }
         hr { border: 0; height: 1px; background: var(--border-light); margin: 2rem 0; }
     </style>
@@ -185,14 +254,14 @@
 
     <header>
         <h1>Inventaire fédéral des subventions aux énergies fossiles</h1>
-        <h2 style="border:none; margin-top:0; color: var(--text-muted);">2025 - RÉSUMÉ</h2>
-        <p style="margin-top:2rem;"><strong>Service Public Fédéral FINANCES</strong><br>
+        <h2>2025 - RÉSUMÉ</h2>
+        <p><strong>Service Public Fédéral FINANCES</strong><br>
         Santé publique, Sécurité de la Chaîne alimentaire, Environnement<br>
         CLIMATECHANGE.BE | .be</p>
     </header>
 
     <div class="toc">
-        <h3>Table des matières</h3>
+        <h3 style="margin-top: 0;">Table des matières</h3>
         <ul>
             <li><a href="#contexte">1. Contexte</a></li>
             <li><a href="#cadre-conceptuel">2. Le cadre conceptuel</a></li>
@@ -887,4 +956,3 @@
     </script>
 </body>
 </html>
-```
